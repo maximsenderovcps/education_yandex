@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Pages} from "components/pages";
+import {Pages} from "components/page";
 import {ProductsContext} from "components/entities/products";
 
 import './app.module.css'

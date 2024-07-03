@@ -1,0 +1,28 @@
+header {
+    background: linear-gradient(0deg, #1C1C21, #1C1C21);
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+	justify-content: space-between;
+}
+
+/*>1200(1140) > 1400(1320)*/
+@media (min-width: 992px) {
+    .navbar {
+        max-width: 960px;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar {
+        max-width: 1140px;
+    }
+}
+
+.brand{
+    position: absolute;
+    left: calc(50vw - 290px/2);
+}

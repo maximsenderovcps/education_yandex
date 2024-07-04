@@ -1,7 +1,7 @@
 import React from "react";
 
-import {IngredientsBurger} from "components/section/ingredients-burger";
-import {ConstructorBurger} from "components/section/constructor-burger";
+import {IngredientsBurger} from "components/sections/ingredients-burger";
+import {ConstructorBurger} from "components/sections/constructor-burger";
 
 import styles from './page-constructor-burger.module.css'
 

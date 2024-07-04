@@ -2,15 +2,15 @@ import React, {useContext, useRef, useState} from "react"
 
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 
-import {CategoryProduct} from "./category-product/category-product";
-import {CardProduct} from "./card-product/card-product";
+import {Category} from "./category/category";
+import {Card} from "./card/card";
 
 import {ProductsContext} from "components/entities/products";
 
 import styles from './ingredients-burger.module.css'
 
 
-export const BurgerIngredients = () => {
+export const IngredientsBurger = () => {
     const [current, setCurrent] = useState('bun')
     const categoriesRefs = useRef({} as any);
 
@@ -38,11 +38,11 @@ export const BurgerIngredients = () => {
 
         return (<React.Fragment key={category.name}>
             <div ref={el => categoriesRefs.current[category.name] = el }> </div>
-            <CategoryProduct  title={category.lang} extraClass={'mb-10'}>
+            <Category  title={category.lang} extraClass={'mb-10'}>
                 {
                     productsOfCat.map((prod => {
                         return (
-                            <CardProduct
+                            <Card
                                 key={prod._id}
                                 count={1}
                                 price={prod.price}
@@ -53,7 +53,7 @@ export const BurgerIngredients = () => {
                         )
                     }))
                 }
-            </CategoryProduct>
+            </Category>
         </React.Fragment>)
     })
 

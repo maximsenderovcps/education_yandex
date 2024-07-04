@@ -9,7 +9,7 @@ import {ProductsContext} from "components/entities/products";
 import styles from './constructor-burger.module.css'
 
 
-export const BurgerConstructor = () => {
+export const ConstructorBurger = () => {
     const price = 610
     const data = useContext(ProductsContext)
 

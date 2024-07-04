@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import DefaultImage from "@ya.praktikum/react-developer-burger-ui-components/dist/images/img.png";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 
+import {className} from "components/shared/utils";
+
 import styles from './card.module.css'
 
 interface CardProps{
@@ -15,35 +17,35 @@ interface CardProps{
     extraClass?: string
 }
 
-//to entities
-export const Card: FC<CardProps> = (props) => {
+export const Card: FC<CardProps> = (
+    {
+        image = DefaultImage,
+        extraClass = '',
+        count = 0,
+        ...props
+    }
+) => {
     let counterElement = undefined
-    if (props.count)
-        counterElement = <Counter count={props.count} size="default" extraClass="m-1" />
+    if (count)
+        counterElement = <Counter count={count} size="default" extraClass="m-1" />
 
     return (
-        <div className={styles.card_content +' '+ props.extraClass}>
+        <div className={className(styles.card_content, [extraClass])}>
             <div className={styles.image_content}>
                 {counterElement}
-                <img src={props.image}
+                <img src={image}
                      alt={props.caption}
-                     className={styles.img + ' ml-4 mr-4'}
+                     className={className(styles.img, ['ml-4', 'mr-4'])}
                 />
             </div>
-            <div className={styles.currency_content + ' mt-1 mb-1'}>
+            <div className={className(styles.currency_content, ['mt-1', 'mb-1'])}>
                 <span className="text text_type_digits-default p-2">{props.price}</span>
                 <CurrencyIcon type="primary" />
             </div>
 
-            <p className={styles.caption + ' text text_type_main-small'}>{props.caption}</p>
+            <p className={className(styles.caption, ['text', 'text_type_main-small'])}>{props.caption}</p>
         </div>
     )
-}
-
-Card.defaultProps = {
-    image: DefaultImage,
-    extraClass: '',
-    count: 0
 }
 
 Card.propTypes = {

@@ -1,9 +1,11 @@
 .buttonLink {
+	display: inline-block;
 	border: none;
 	cursor: pointer;
 	outline: none;
 	border-radius: var(--common-border-radius);
 	transition: var(--common-transition);
+	text-decoration: none;
 }
 
 .caption {
@@ -35,7 +37,6 @@
 
 .buttonLink_type_primary:active {
 	opacity: 0.9;
-	/*background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(63.18deg, #801AB3 0%, #4C4CFF 100%);*/
 }
 
 .buttonLink_type_secondary {

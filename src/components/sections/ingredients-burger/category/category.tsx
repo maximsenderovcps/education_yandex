@@ -1,28 +1,30 @@
-import React, {FC, ReactNode} from "react";
+import React, {FC, PropsWithChildren} from "react";
 import PropTypes from "prop-types";
 
 import styles from './category.module.css'
 
 interface CategoryProps{
     title: string
-    children: ReactNode
     extraClass?: string
 }
 
-export const Category:FC<CategoryProps> = (props) => {
-    return(
-        <div className={props.extraClass}>
-            <p className='text text_type_main-medium pb-2'>{props.title}</p>
+export const Category: FC<PropsWithChildren<CategoryProps>> = (
+   {
+        title,
+        extraClass = '',
+        children
+    }
+) => {
+
+return (
+        <div className={extraClass}>
+            <p className='text text_type_main-medium pb-2'>{title}</p>
             <div className={styles.items}>
-                {props.children}
+                {children}
             </div>
         </div>
     )
-}
-
-Category.defaultProps={
-    extraClass: ''
-}
+};
 
 Category.propTypes = {
     title: PropTypes.string.isRequired,

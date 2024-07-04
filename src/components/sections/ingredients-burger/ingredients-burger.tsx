@@ -8,14 +8,14 @@ import {Card} from "./card/card";
 import {ProductsContext} from "components/entities/products";
 
 import styles from './ingredients-burger.module.css'
-
+import {Ingredient} from "./ingredient/ingredient";
 
 export const IngredientsBurger = () => {
     const [current, setCurrent] = useState('bun')
-    const categoriesRefs = useRef({} as any);
+    const classRefs = useRef({} as any);
 
     const data = useContext(ProductsContext)
-    const categoriesData = [
+    const classData = [
         {
             name: 'bun',
             lang: 'Булки'
@@ -30,26 +30,27 @@ export const IngredientsBurger = () => {
 
     const OnClickTabCategory = (tabName: string)=>{
         setCurrent(tabName)
-        categoriesRefs.current[tabName].scrollIntoView({ block: "start",  behavior: "smooth" });
+        classRefs.current[tabName].scrollIntoView({ block: "start",  behavior: "smooth" });
     }
 
-    const productsElements = categoriesData && categoriesData.map((category, index)=>{
+    const productsElements = classData && classData.map((category, index)=>{
         const productsOfCat = data && data.filter((v)=>v.type===category.name)
 
         return (<React.Fragment key={category.name}>
-            <div ref={el => categoriesRefs.current[category.name] = el }> </div>
+            <div ref={el => classRefs.current[category.name] = el }> </div>
             <Category  title={category.lang} extraClass={'mb-10'}>
                 {
                     productsOfCat.map((prod => {
                         return (
-                            <Card
-                                key={prod._id}
-                                count={1}
-                                price={prod.price}
-                                caption={prod.name}
-                                image={prod.image_large}
-                                extraClass={'mr-3 ml-3 mb-4 mt-4'}
-                            />
+                            <Ingredient key={prod._id} detail={prod}>
+                                <Card
+                                    count={1}
+                                    price={prod.price}
+                                    caption={prod.name}
+                                    image={prod.image_large}
+                                    extraClass={'mr-3 ml-3 mb-4 mt-4'}
+                                />
+                            </Ingredient>
                         )
                     }))
                 }
@@ -61,7 +62,7 @@ export const IngredientsBurger = () => {
         <section>
             <div style={{display: 'flex'}} >
                 {
-                    categoriesData && categoriesData.map((v)=>
+                    classData && classData.map((v)=>
                         <Tab key={v.name}
                              value={v.name}
                              active={current === v.name}

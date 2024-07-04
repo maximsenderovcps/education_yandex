@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface IProduct{
+export interface IProduct{
     _id: string
     name: string
     type:"bun" | "main" | "sauce"

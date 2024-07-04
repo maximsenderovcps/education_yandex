@@ -1,8 +1,9 @@
-import React, {useContext} from "react";
+import React, {useContext, useMemo} from "react";
 
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {CardPosition} from "./position/position";
+import {Order} from "./order/order";
 
 import {ProductsContext} from "components/entities/products";
 
@@ -11,14 +12,20 @@ import styles from './constructor-burger.module.css'
 
 export const ConstructorBurger = () => {
     const price = 610
-    const data = useContext(ProductsContext)
+    const products = useContext(ProductsContext)
 
 
-    const selectedUser = ["60666c42cc7b410027a1a9b7", "60666c42cc7b410027a1a9b6",
-    "60666c42cc7b410027a1a9b9", "60666c42cc7b410027a1a9b8", "60666c42cc7b410027a1a9bb",
-    "60666c42cc7b410027a1a9ba"]
-    const selectedProducts = data && data.filter((v)=>
-        v._id === selectedUser.find((id)=>id==v._id)
+    const selectedUser: string[] = useMemo(()=>
+             products && products
+             .slice(1, products.length > 10? 9: products.length)
+             .reduce<string[]>((prev: string[], current) =>{
+                 prev.push(current._id)
+                 return prev
+         }, [])
+     , [products])
+
+    const selectedProducts = products && products.filter((v)=>
+        v._id === selectedUser.find((id)=>id===v._id)
     )
 
    return (
@@ -56,8 +63,9 @@ export const ConstructorBurger = () => {
                    <p className="text text_type_digits-medium">{price}&nbsp;
                    <CurrencyIcon type="primary" /></p>
                </span>
-               <Button htmlType={'button'}>Оформить заказ</Button>
-           </div>
+               <Order>
+                   <Button htmlType={'button'}>Оформить заказ</Button>
+               </Order>           </div>
        </section>
    );
 }

@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 
-import {CardPosition} from "./card-position/card-position";
+import {CardPosition} from "./position/position";
 
 import {ProductsContext} from "components/entities/products";
 

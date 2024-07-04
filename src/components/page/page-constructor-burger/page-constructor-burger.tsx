@@ -1,7 +1,7 @@
 import React from "react";
 
-import {BurgerIngredients} from "components/section/burger-ingredients";
-import {BurgerConstructor} from "components/section/burger-constructor";
+import {IngredientsBurger} from "components/section/ingredients-burger";
+import {ConstructorBurger} from "components/section/constructor-burger";
 
 import styles from './page-constructor-burger.module.css'
 
@@ -13,8 +13,8 @@ export const PageConstructorBurger = () => {
                 Соберите бургер
             </p>
             <div className={styles.ingredients_and_constructor}>
-                <BurgerIngredients/>
-                <BurgerConstructor/>
+                <IngredientsBurger/>
+                <ConstructorBurger/>
             </div>
         </section>
     )

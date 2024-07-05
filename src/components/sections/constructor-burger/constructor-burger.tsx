@@ -25,7 +25,7 @@ export const BurgerConstructor = () => {
      , [products])
 
     const selectedProducts = products && products.filter((v)=>
-        v._id === selectedUser.find((id)=>id===v._id)
+        v._id === selectedUser.find((id)=>id===v._id && v.type !== 'bun')
     )
 
    return (

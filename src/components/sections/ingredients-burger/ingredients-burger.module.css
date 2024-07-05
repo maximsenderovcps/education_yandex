@@ -10,7 +10,7 @@
   composes: content;
 
   max-height: 60vh;
-  width: 600px;
+  width: 620px;
   overflow-y: scroll;
 }
 .tabsWrapper{

@@ -1,0 +1,29 @@
+:root{
+    --card_product_image_width: 240px
+}
+
+.card_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image_content{
+    position: relative;
+}
+
+.currency_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caption{
+    max-width: var(--card_product_image_width);
+    text-align: center;
+}
+
+.img{
+    width: var(--card_product_image_width);
+    height: 120px;
+}

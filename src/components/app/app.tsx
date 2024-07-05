@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Pages} from "components/page";
-import {IProduct, ProductsContext} from "components/entities/products";
+import {IProduct, ProductsContext} from "entities/products";
 
 import './app.module.css'
 

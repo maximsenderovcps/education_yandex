@@ -1,1 +1,1 @@
-export {IngredientsBurger} from "./ingredients-burger";
+export {BurgerIngredients} from "./ingredients-burger";

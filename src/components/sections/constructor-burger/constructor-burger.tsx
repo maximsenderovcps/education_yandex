@@ -5,12 +5,12 @@ import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-comp
 import {CardPosition} from "./position/position";
 import {Order} from "./order/order";
 
-import {ProductsContext} from "components/entities/products";
+import {ProductsContext} from "entities/products";
 
 import styles from './constructor-burger.module.css'
 
 
-export const ConstructorBurger = () => {
+export const BurgerConstructor = () => {
     const price = 610
     const products = useContext(ProductsContext)
 

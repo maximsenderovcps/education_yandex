@@ -21,20 +21,15 @@ export const CardPosition: FC<CardPositionProps> = (props)=>{
 
     return(
         <div className={styles.content}>
-            <span style={{width:32}}>
+            <span className={styles.dragIcon}>
                 {!isLocked && <DragIcon type="primary" />}
             </span>
             <ConstructorElement
-                thumbnail={thumbnail as string}
+                thumbnail={thumbnail ?? DefaultImage}
                 {...other}
                 />
         </div>
     )
-}
-
-CardPosition.defaultProps={
-    thumbnail: DefaultImage,
-    isLocked: false
 }
 
 CardPosition.propTypes = {

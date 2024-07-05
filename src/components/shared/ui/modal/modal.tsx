@@ -42,14 +42,14 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
             onClose()
     }
 
-    const handleClose = () =>{
-        onClose()
-    }
+    // const handleClose = () =>{
+    //     onClose()
+    // }
 
     return ReactDOM.createPortal(
         (
             <>
-                <Overlay onClick={handleClose}/>
+                <Overlay onClick={onClose}/>
                 <div className={styles.modal}
                      onKeyDown={handleCloseByKeyDown}
                      ref={modalRef}
@@ -57,7 +57,7 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
                 >
                     <div className={className(styles.modal_dialog, ['p-10'])}>
                         <div className={styles.close_icon_content}>
-                            <CloseIcon type="primary" onClick={handleClose}/>
+                            <CloseIcon type="primary" onClick={onClose}/>
                         </div>
                         <div className={className(styles.modal_content, [extraClassContent])}>
                             {children}

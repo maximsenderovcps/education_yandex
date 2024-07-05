@@ -5,12 +5,12 @@ import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import {Category} from "./category/category";
 import {Card} from "./card/card";
 
-import {ProductsContext} from "components/entities/products";
+import {ProductsContext} from "entities/products";
 
 import styles from './ingredients-burger.module.css'
-import {Ingredient} from "./ingredient/ingredient";
+import {IngredientDetails} from "./ingredient/ingredient";
 
-export const IngredientsBurger = () => {
+export const BurgerIngredients = () => {
     const [current, setCurrent] = useState('bun')
     const classRefs = useRef({} as any);
 
@@ -42,7 +42,7 @@ export const IngredientsBurger = () => {
                 {
                     productsOfCat.map((prod => {
                         return (
-                            <Ingredient key={prod._id} detail={prod}>
+                            <IngredientDetails key={prod._id} detail={prod}>
                                 <Card
                                     count={1}
                                     price={prod.price}
@@ -50,7 +50,7 @@ export const IngredientsBurger = () => {
                                     image={prod.image_large}
                                     extraClass={'mr-3 ml-3 mb-4 mt-4'}
                                 />
-                            </Ingredient>
+                            </IngredientDetails>
                         )
                     }))
                 }
@@ -60,7 +60,7 @@ export const IngredientsBurger = () => {
 
     return (
         <section>
-            <div style={{display: 'flex'}} >
+            <div className={styles.tabsWrapper} >
                 {
                     classData && classData.map((v)=>
                         <Tab key={v.name}

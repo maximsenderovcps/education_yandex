@@ -3,17 +3,17 @@ import {FC, PropsWithChildren} from "react";
 import {useVisible} from "components/shared/hooks";
 import {Modal} from "components/shared/ui";
 
-import {IProduct} from "components/entities/products";
+import {IProduct} from "entities/products";
 import {className} from "components/shared/utils";
 
 import styles from './ingredient.module.css'
 
 
-interface IngredientProps{
+interface IngredientDetailsProps{
     detail: IProduct
 }
 
-export const Ingredient: FC<PropsWithChildren<IngredientProps>> = (
+export const IngredientDetails: FC<PropsWithChildren<IngredientDetailsProps>> = (
     {
         detail,
         children

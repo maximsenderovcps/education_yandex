@@ -1,19 +1,14 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-//import logger from 'redux-logger'
 
-import { createLogger } from 'redux-logger'
-
-const logger = createLogger({
-  // ...options
-});
+import type {} from 'redux-thunk/extend-redux'
+import logger from 'redux-logger'
 
 import {baseApi} from "components/shared/api";
-import {reducersEntities} from "entities";
+import {reducersEntities} from "entities/index";
 
 //Reducers
 const rootReducers = combineReducers({
-    [baseApi.reducerPath]: baseApi.reducer,
-    ...reducersEntities
+    [baseApi.reducerPath]: baseApi.reducer, ...reducersEntities
 })
 
 // Configures store

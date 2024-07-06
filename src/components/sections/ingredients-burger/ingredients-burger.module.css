@@ -13,6 +13,7 @@
   width: 620px;
   overflow-y: scroll;
 }
-.tabsWrapper{
+
+.tabs_content{
   display: flex;
 }

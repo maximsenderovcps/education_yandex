@@ -1,43 +1,87 @@
-import React, {FC} from "react";
+import React, {FC, useCallback} from "react";
 import PropTypes from "prop-types";
 
 import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import DefaultImage from "@ya.praktikum/react-developer-burger-ui-components/dist/images/img.png";
 
+import {useDragDropItem} from "components/shared/hooks/useDragDropItem";
+import {useAppDispatch} from "components/services/providers/store";
+import {basketActions} from "entities/basket";
+
 import styles from './position.module.css'
 
 interface CardPositionProps{
+    id: string;
+    index: number;
+    uuid: string;
+    typeProduct: string;
     text: string;
     thumbnail?: string;
     price: number;
     type?: 'top' | 'bottom';
     isLocked?: boolean;
     extraClass?: string;
-    handleClose?: () => void;
 }
 
-export const CardPosition: FC<CardPositionProps> = (props)=>{
-    const {thumbnail, isLocked, ...other} = props
+export const CardPosition: FC<CardPositionProps> = (
+    {
+        id, index, uuid, typeProduct,
+        thumbnail= DefaultImage,
+        isLocked = false,
+        ...props
+    }
+)=>{
+    const dispatch = useAppDispatch()
+
+    const handleMoveItem = useCallback((fromUUID: string, toIndex: number)=>{
+        dispatch(basketActions.move({fromUUID, toIndex}))
+    }, [dispatch])
+
+    const handleDelete = useCallback(()=>{
+        dispatch(basketActions.delete(index))
+    }, [dispatch, index])
+
+    const [dragRef, dropRef, isDragging] = useDragDropItem(
+        ['sauce+constructor', 'main+constructor'],
+        id,
+        index,
+        uuid,
+        `${typeProduct}+constructor`,
+        handleMoveItem
+    )
+
+    let extraDragDropProps = {ref: dropRef}
+
+    if (isLocked)
+        extraDragDropProps = {ref: ()=>{}}
+
+    const opacity = isDragging ? 0.2 : 1
 
     return(
-        <div className={styles.content}>
-            <span className={styles.dragIcon}>
-                {!isLocked && <DragIcon type="primary" />}
+        <div className={styles.content} style={{opacity}} {...extraDragDropProps}>
+            <span className={styles.drag_place}>
+                {!isLocked && <span ref={dragRef}><DragIcon type="primary"/></span>}
             </span>
+
             <ConstructorElement
-                thumbnail={thumbnail ?? DefaultImage}
-                {...other}
-                />
+                thumbnail={thumbnail as string}
+                isLocked={isLocked}
+                handleClose={handleDelete}
+                {...props}
+            />
+
         </div>
     )
 }
 
 CardPosition.propTypes = {
+    id: PropTypes.string.isRequired,
+    uuid: PropTypes.string.isRequired,
+    typeProduct: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     thumbnail: PropTypes.string,
     price: PropTypes.number.isRequired,
     type: PropTypes.oneOf(['top' , 'bottom']),
     isLocked: PropTypes.bool,
     extraClass: PropTypes.string,
-    handleClose: PropTypes.func,
 }

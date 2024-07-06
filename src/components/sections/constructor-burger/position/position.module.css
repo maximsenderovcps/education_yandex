@@ -5,4 +5,5 @@
 }
 .dragIcon{
     width: 32px;
+    cursor: pointer;
 }

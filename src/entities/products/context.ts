@@ -1,7 +1,6 @@
-import { createContext } from "react";
-
 export interface IProduct{
     _id: string
+    uuid?: string | null
     name: string
     type:"bun" | "main" | "sauce"
     proteins: number
@@ -14,5 +13,3 @@ export interface IProduct{
     image_large:string
     __v: number;
 }
-
-export const ProductsContext = createContext<IProduct[]>([]);

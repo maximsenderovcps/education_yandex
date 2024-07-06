@@ -1,21 +1,30 @@
-import React, {useContext, useRef, useState} from "react"
+import React, {useContext, useRef, useState, useMemo} from "react"
 
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {Category} from "./category/category";
 import {Card} from "./card/card";
 
-import {ProductsContext} from "entities/products";
+import {useAppSelector} from "components/services/providers/store";
+import {selectSelectedProductsState} from "entities/basket";
+import { useGetProductsQuery } from "entities/products";
+
+// import {ProductsContext} from "entities/products";
+
+import {IngredientDetails} from "./ingredient/ingredient";
+import {useTabScroll} from "./hook/useTabScroll";
 
 import styles from './ingredients-burger.module.css'
-import {IngredientDetails} from "./ingredient/ingredient";
 
 export const BurgerIngredients = () => {
-    const [current, setCurrent] = useState('bun')
-    const classRefs = useRef({} as any);
+    const [currentTab, scrollRef, categoriesRefs, onClickTabCategory] = useTabScroll('bun', 70)
+    const {bun: selectedBun, ingredients: selectedIngredients} = useAppSelector(selectSelectedProductsState)
 
-    const data = useContext(ProductsContext)
-    const classData = [
+    const {
+        data: products = [],
+    } = useGetProductsQuery()
+
+    const categoriesData = useMemo(()=>[
         {
             name: 'bun',
             lang: 'Булки'
@@ -26,54 +35,57 @@ export const BurgerIngredients = () => {
             name: 'main',
             lang: 'Начинки'
         },
-    ]
+    ], [])
 
-    const OnClickTabCategory = (tabName: string)=>{
-        setCurrent(tabName)
-        classRefs.current[tabName].scrollIntoView({ block: "start",  behavior: "smooth" });
-    }
+    const productsElements = useMemo(()=> categoriesData.map((category, index)=>{
+        const productsOfCat = products.filter((v)=>v.type===category.name)
 
-    const productsElements = classData && classData.map((category, index)=>{
-        const productsOfCat = data && data.filter((v)=>v.type===category.name)
+        return (
+            <div key={category.name} ref={el => categoriesRefs.current[category.name] = el! }>
+                <Category  title={category.lang} extraClass={'mb-10'}>
+                    {
+                        productsOfCat.map((prod => {
+                            // Counter products
+                            const count = selectedIngredients.filter((v)=>v.id===prod._id).length +
+                                (selectedBun === prod._id ? 1 : 0)
 
-        return (<React.Fragment key={category.name}>
-            <div ref={el => classRefs.current[category.name] = el }> </div>
-            <Category  title={category.lang} extraClass={'mb-10'}>
-                {
-                    productsOfCat.map((prod => {
-                        return (
-                            <IngredientDetails key={prod._id} detail={prod}>
-                                <Card
-                                    count={1}
+                            return (
+                                <Card key={prod._id}
+                                    id={prod._id}
+                                    productType={prod.type}
+                                    count={count}
                                     price={prod.price}
                                     caption={prod.name}
                                     image={prod.image_large}
+                                    details={prod}
                                     extraClass={'mr-3 ml-3 mb-4 mt-4'}
                                 />
-                            </IngredientDetails>
-                        )
-                    }))
-                }
-            </Category>
-        </React.Fragment>)
-    })
+                            )
+                        }))
+                    }
+                </Category>
+            </div>
+        )
+    }), [categoriesData, products, categoriesRefs, selectedBun, selectedIngredients])
 
     return (
         <section>
-            <div className={styles.tabsWrapper} >
+            <IngredientDetails  />
+
+            <div className={styles.tabs_content}>
                 {
-                    classData && classData.map((v)=>
+                    categoriesData.map((v)=>
                         <Tab key={v.name}
                              value={v.name}
-                             active={current === v.name}
-                             onClick={OnClickTabCategory}>
+                             active={currentTab === v.name}
+                             onClick={onClickTabCategory}>
                             {v.lang}
                         </Tab>
                     )
                 }
             </div>
 
-            <div className={styles.box + ' mt-10'}>
+            <div className={styles.box + ' mt-10'} ref={scrollRef}>
                 { productsElements }
             </div>
         </section>

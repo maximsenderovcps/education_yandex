@@ -1,11 +1,9 @@
-import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef} from "react";
+import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef, useCallback} from "react";
 import ReactDOM from "react-dom";
 
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {clName} from "components/shared/utils";
-
-import {Overlay} from "./overlay/overlay";
 
 import styles from './modal.module.css'
 
@@ -27,6 +25,11 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
     const modalRef= useRef<HTMLDialogElement>(null)
     const bodyRef = useRef(bodyElement)
 
+    const handleCloseByKeyDown = useCallback(  (e:KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
+        if (e.code === 'Escape')
+            onClose()
+    }, [onClose])
+
     useEffect(() => {
         bodyRef.current.style.overflow = 'hidden'
         modalRef.current?.showModal()
@@ -36,11 +39,6 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
             bodyRef.current.style.overflow = ''
         }
     }, [bodyRef, modalRef])
-
-    const handleCloseByKeyDown = (e:KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
-        if (e.code === 'Escape')
-            onClose()
-    }
 
     const handleClose = (e?: SyntheticEvent<HTMLDialogElement>) =>{
         onClose()

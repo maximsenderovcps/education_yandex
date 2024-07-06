@@ -1,4 +1,4 @@
-import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef, useCallback} from "react";
+import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
 
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
@@ -25,15 +25,17 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
     const modalRef= useRef<HTMLDialogElement>(null)
     const bodyRef = useRef(bodyElement)
 
-    const handleCloseByKeyDown = useCallback(  (e:KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
+    const handleCloseByKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
         if (e.code === 'Escape')
             onClose()
-    }, [onClose])
+    }
 
     useEffect(() => {
         bodyRef.current.style.overflow = 'hidden'
         modalRef.current?.showModal()
         modalRef.current?.focus()
+        modalRef.current?.addEventListener('keyup', handleCloseByKeyDown as any)
+        //window.addEventListener('keyup', handleCloseByKeyDown as any)
 
         return () => {
             bodyRef.current.style.overflow = ''
@@ -61,7 +63,7 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
                 <dialog className={styles.modal}
                     onClick={handleClickBackdrop}
                     onClose={handleClose}
-                    onKeyPress={handleCloseByKeyDown}
+                    //onKeyPress={handleCloseByKeyDown}
                     ref={modalRef}
                 >
                     <div className={clName(styles.modal_dialog, ['p-10'])}>

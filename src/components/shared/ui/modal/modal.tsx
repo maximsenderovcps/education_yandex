@@ -25,20 +25,28 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
     const modalRef= useRef<HTMLDialogElement>(null)
     const bodyRef = useRef(bodyElement)
 
-    const handleCloseByKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
-        if (e.code === 'Escape')
-            onClose()
-    }
+    // const handleCloseByKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
+    //     if (e.code === 'Escape')
+    //         onClose()
+    // }
 
     useEffect(() => {
         bodyRef.current.style.overflow = 'hidden'
         modalRef.current?.showModal()
         modalRef.current?.focus()
-        modalRef.current?.addEventListener('keyup', handleCloseByKeyDown as any)
+        //modalRef.current?.addEventListener('keyup', handleCloseByKeyDown as any)
         //window.addEventListener('keyup', handleCloseByKeyDown as any)
+
+        const handleCloseByKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLDialogElement>) => {
+            if (e.code === 'Escape')
+                onClose()
+        }
+
+        window.addEventListener('keyup', handleCloseByKeyDown as any)
 
         return () => {
             bodyRef.current.style.overflow = ''
+            window.removeEventListener('keyup', handleCloseByKeyDown as any)
         }
     }, [bodyRef, modalRef])
 

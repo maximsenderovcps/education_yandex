@@ -1,4 +1,6 @@
 import React from "react";
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
 
 import {BurgerIngredients} from "components/sections/ingredients-burger";
 import {BurgerConstructor} from "components/sections/constructor-burger";
@@ -13,8 +15,10 @@ export const PageConstructorBurger = () => {
                 Соберите бургер
             </p>
             <div className={styles.ingredients_and_constructor}>
-                <BurgerIngredients/>
-                <BurgerConstructor/>
+                <DndProvider backend={HTML5Backend}>
+                    <BurgerIngredients/>
+                    <BurgerConstructor/>
+                </DndProvider>
             </div>
         </section>
     )

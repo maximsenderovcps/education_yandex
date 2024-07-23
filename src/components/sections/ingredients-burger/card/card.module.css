@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .image_content{
     position: relative;
 }
@@ -26,4 +27,8 @@
 .img{
     width: var(--card_product_image_width);
     height: 120px;
+}
+
+.drag_place{
+    cursor: pointer;
 }

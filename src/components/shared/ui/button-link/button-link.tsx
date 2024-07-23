@@ -1,6 +1,6 @@
 import React, {FC, HTMLProps, SyntheticEvent} from "react";
 
-import {className} from "components/shared/utils";
+import {clName} from "components/shared/utils";
 
 import styles  from './button-link.module.css';
 
@@ -25,7 +25,7 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
                                                     children,
                                                     ...otherProps
 }) => {
-    const buttonStyle = className(styles.buttonLink, [
+    const buttonStyle = clName(styles.buttonLink, [
         styles[`buttonLink_type_${type}`],
         styles[`buttonLink_size_${size}`]
     ],{

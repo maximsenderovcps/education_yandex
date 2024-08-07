@@ -1,4 +1,4 @@
-import {RootStateType} from "components/providers/store";
+import {RootStateType} from "components/services/providers/store";
 
 export const selectIsAuthChecked = (state: RootStateType) => !state.session.isLoading
 export const selectIsAuthed = (state: RootStateType) => state.session.isAuthed

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 
 import {RoutesPath} from "components/shared/configs";
 
-import {selectIsAuthed} from "components/entities/session";
+import {selectIsAuthed} from "entities/session";
 
 
 export const RequireGuest = () => {

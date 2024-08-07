@@ -2,7 +2,7 @@ import {baseApi} from "components/shared/api";
 
 import {API_PATH_USER} from "components/shared/configs/api";
 
-import {IUserProfile} from "components/entities/profile";
+import {IUserProfile} from "entities/profile";
 
 import {mapResponse} from "./maps";
 import {ProfileDto, ProfileBody} from "./types";

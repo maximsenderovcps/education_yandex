@@ -1,6 +1,6 @@
 import React, {useCallback} from "react"
 
-import {useAppDispatch} from "components/providers/store"
+import {useAppDispatch} from "components/services/providers/store"
 
 import {ForgotBody} from "./api/types"
 import {usePostForgotMutation} from "./api/api";

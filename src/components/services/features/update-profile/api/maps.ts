@@ -1,4 +1,4 @@
-import {IUserProfile} from "components/entities/profile";
+import {IUserProfile} from "entities/profile";
 
 import {ProfileDto} from "./types";
 

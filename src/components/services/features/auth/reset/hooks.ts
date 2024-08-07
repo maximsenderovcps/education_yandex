@@ -1,6 +1,6 @@
 import React, {useCallback} from "react"
 
-import {useAppDispatch} from "components/providers/store"
+import {useAppDispatch} from "components/services/providers/store"
 
 import {ResetBody} from "./api/types"
 import {usePostResetMutation} from "./api/api";

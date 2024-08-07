@@ -1,6 +1,6 @@
 import React, {useCallback} from "react"
 
-import {useAppDispatch} from "components/providers/store"
+import {useAppDispatch} from "components/services/providers/store"
 
 import {ProfileBody} from "./api/types"
 import {useUpdateProfileMutation} from "./api/api";

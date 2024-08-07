@@ -2,7 +2,7 @@ import {baseApi} from "components/shared/api";
 
 import {API_PATH_LOGIN} from "components/shared/configs/api";
 
-import {ICrendentials} from "components/entities/session";
+import {ICrendentials} from "entities/session";
 
 import {mapCrendentials} from "./maps";
 import {LoginBody, CrendentialsDto} from "./types";

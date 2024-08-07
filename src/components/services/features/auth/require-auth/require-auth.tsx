@@ -4,7 +4,7 @@ import { useLocation, Navigate, Outlet } from "react-router-dom"
 
 import {RoutesPath} from "components/shared/configs";
 
-import {selectIsAuthChecked, selectIsAuthed} from "components/entities/session";
+import {selectIsAuthChecked, selectIsAuthed} from "entities/session";
 
 
 

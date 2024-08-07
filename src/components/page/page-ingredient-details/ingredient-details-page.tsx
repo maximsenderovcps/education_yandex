@@ -14,7 +14,7 @@ import {
 
 import {useGetProductsQuery} from "entities/products";
 
-import {BurgerIngredients} from "components/sections/ingredients-burger";
+import {IngredientDetails} from "components/sections/ingredients-burger";
 
 import styles from './ingredient-details-page.module.css'
 
@@ -60,12 +60,12 @@ export const IngredientDetailsPage = () => {
             {!details && <div>Не найден такой ингредиент</div>}
             {isOpenModal && background && details?._id &&
                 <Modal onClose={handleClose} extraClassContent="pb-5">
-                    <BurgerIngredients />
+                    <IngredientDetails details={details}/>
                 </Modal>
             }
             {!isOpenModal && details?._id &&
                 <section className={styles.page}>
-                    <BurgerIngredients />
+                    <IngredientDetails details={details}/>
                 </section>
             }
         </>

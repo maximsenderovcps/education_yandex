@@ -60,7 +60,7 @@ export const EmailInput: React.FC<TEmailInputInterface> = ({
     };
     return (
         <Input
-            type="email"
+            onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} type="email"
             placeholder={placeholder}
             onChange={onChange}
             icon={isIcon ? 'EditIcon' : undefined}
@@ -73,7 +73,6 @@ export const EmailInput: React.FC<TEmailInputInterface> = ({
             onIconClick={onIconClick}
             size={size}
             extraClass={extraClass}
-            {...rest}
-        />
+            {...rest}        />
     );
 };

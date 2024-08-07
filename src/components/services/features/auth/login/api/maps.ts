@@ -1,6 +1,6 @@
 import {CrendentialsDto} from "./types";
 
-import {ICrendentials} from "components/entities/session";
+import {ICrendentials} from "entities/session";
 
 
 export function mapCrendentials(dto: CrendentialsDto): ICrendentials {

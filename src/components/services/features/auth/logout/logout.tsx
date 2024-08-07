@@ -2,8 +2,8 @@ import React, {useEffect} from 'react'
 import {Navigate} from "react-router-dom";
 
 import {RoutesPath} from "components/shared/configs";
-import {useAppSelector} from "components/providers/store";
-import {selectRefreshToken} from "components/entities/session";
+import {useAppSelector} from "components/services/providers/store";
+import {selectRefreshToken} from "entities/session";
 
 import {useHandleLogout} from "./hooks";
 

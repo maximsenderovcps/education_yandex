@@ -9,12 +9,9 @@ import {useAppSelector} from "components/services/providers/store";
 import {selectSelectedProductsState} from "entities/basket";
 import { useGetProductsQuery } from "entities/products";
 
-// import {ProductsContext} from "entities/products";
-
-import {IngredientDetails} from "./ingredient/ingredient";
 import {useTabScroll} from "./hook/useTabScroll";
 
-import styles from './ingredients-burger.module.css'
+import styles from './burger-ingredients.module.css'
 
 export const BurgerIngredients = () => {
     const [currentTab, scrollRef, categoriesRefs, onClickTabCategory] = useTabScroll('bun', 70)
@@ -70,8 +67,6 @@ export const BurgerIngredients = () => {
 
     return (
         <section>
-            <IngredientDetails  />
-
             <div className={styles.tabs_content}>
                 {
                     categoriesData.map((v)=>

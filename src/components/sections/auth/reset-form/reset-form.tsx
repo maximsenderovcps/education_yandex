@@ -3,10 +3,12 @@ import {Navigate, useLocation} from "react-router-dom";
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components"
 
 import {RoutesPath} from "components/shared/configs";
-import {ErrorText, WarningText} from "components/shared/ui";
-import {useForm} from "components/shared/hooks";
 
-import {useHandleReset} from "components/features/auth/reset";
+import {ErrorText} from "components/shared/ui/error-text/error-text";
+import {WarningText} from "components/shared/ui/warning-text/warning-text";
+import {useForm} from "components/shared/hooks/useForm";
+
+import {useHandleReset} from "components/services/features/auth/reset";
 
 import {TextNavLink} from "../ui/text-nav-link";
 import {Footer} from "../ui/footer";
@@ -41,15 +43,14 @@ export const ResetForm = ()=>{
                     required
                 />
                 <Input
-                  type={'text'}
-                  placeholder={'Введите код из письма'}
-                  onChange={onChange}
+                    type={'text'}
+                    placeholder={'Введите код из письма'}
+                    onChange={onChange}
 
-                  value={state.token}
-                  name={'token'}
-                  extraClass="mt-6"
-                  required
-                />
+                    value={state.token}
+                    name={'token'}
+                    extraClass="mt-6"
+                    required onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                />
                 <Button
                     htmlType="submit"
                     type="primary"

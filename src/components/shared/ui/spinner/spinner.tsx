@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Overlay} from "../overlay/overlay";
+import {Overlay} from "../modal/overlay/overlay";
 
 import styles from './spinner.module.css'
 

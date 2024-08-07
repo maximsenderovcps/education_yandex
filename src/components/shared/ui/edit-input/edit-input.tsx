@@ -35,7 +35,7 @@ export const EditInput: React.FC<TEditInputInterface> = ({
 
     return (
         <Input
-            type="text"
+            onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} type="text"
             placeholder={placeholder}
             onChange={onChange}
             icon={isIcon ? 'EditIcon' : undefined}
@@ -46,7 +46,6 @@ export const EditInput: React.FC<TEditInputInterface> = ({
             onBlur={onBlur}
             size={size}
             extraClass={extraClass}
-            {...rest}
-        />
+            {...rest}        />
     );
 };

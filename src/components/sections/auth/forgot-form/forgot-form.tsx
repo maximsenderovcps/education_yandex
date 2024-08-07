@@ -3,10 +3,12 @@ import {Navigate} from "react-router-dom";
 import {Button} from "@ya.praktikum/react-developer-burger-ui-components"
 
 import {RoutesPath} from "components/shared/configs";
-import {ErrorText, EmailInput, WarningText} from "components/shared/ui";
-import {useForm} from "components/shared/hooks";
+import {ErrorText} from "components/shared/ui/error-text/error-text";
+import {EmailInput} from "components/shared/ui/email-input/email-input";
+import {WarningText} from "components/shared/ui/warning-text/warning-text";
+import {useForm} from "components/shared/hooks/useForm";
 
-import {useHandleForgot} from "components/features/auth/forgot";
+import {useHandleForgot} from "components/services/features/auth/forgot";
 
 import {TextNavLink} from "../ui/text-nav-link";
 import {Footer} from "../ui/footer";

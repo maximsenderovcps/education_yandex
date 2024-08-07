@@ -1,8 +1,8 @@
 import React, {useCallback} from "react"
 
-import {useAppDispatch} from "components/providers/store"
+import {useAppDispatch} from "components/services/providers/store"
 
-import {sessionActions} from "components/entities/session";
+import {sessionActions} from "entities/session";
 
 import {LogoutBody} from "./api/types"
 import {usePostLogoutMutation} from "./api/api";

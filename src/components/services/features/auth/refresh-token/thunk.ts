@@ -1,9 +1,9 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
-import {RootStateType} from "components/providers/store";
+import {RootStateType} from "components/services/providers/store";
 
-import {ITokens, selectRefreshToken, sessionActions} from "components/entities/session";
-import {selectText, spinnerActions} from "components/entities/spinner";
+import {ITokens, selectRefreshToken, sessionActions} from "entities/session";
+import {selectText, spinnerActions} from "entities/spinner";
 
 import {RefreshTokenBody} from "./api/types";
 import {refreshTokenAPI} from "./api/api";

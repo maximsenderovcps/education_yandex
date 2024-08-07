@@ -2,15 +2,13 @@ import React, {useState} from 'react'
 
 import {Button, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components"
 
-import {
-    EditInput,
-    EmailInput,
-    ErrorText
-} from "components/shared/ui"
-import {useForm} from "components/shared/hooks"
+import {EditInput} from "components/shared/ui/edit-input/edit-input"
+import {EmailInput} from "components/shared/ui/email-input/email-input"
+import {ErrorText} from "components/shared/ui/error-text/error-text"
+import {useForm} from "components/shared/hooks/useForm"
 
-import {useGetProfileQuery} from "components/entities/profile";
-import {useUpdateProfile} from "components/features/update-profile";
+import {useGetProfileQuery} from "entities/profile";
+import {useUpdateProfile} from "components/services/features/update-profile";
 
 import styles from './profile-form.module.css'
 

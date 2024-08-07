@@ -1,5 +1,5 @@
 import {RefreshTokenDto} from "./types";
-import {ITokens} from "components/entities/session";
+import {ITokens} from "entities/session";
 
 
 export function mapTokens(dto: RefreshTokenDto): ITokens {

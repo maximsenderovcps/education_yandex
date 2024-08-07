@@ -2,14 +2,12 @@ import React from 'react'
 
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components"
 
-import {
-    EmailInput,
-    ErrorText
-} from "components/shared/ui"
-import {useForm} from "components/shared/hooks"
+import {ErrorText} from "components/shared/ui/error-text/error-text";
+import {EmailInput} from "components/shared/ui/email-input/email-input";
+import {useForm} from "components/shared/hooks/useForm";
 import {RoutesPath} from "components/shared/configs"
 
-import {useHandleRegister} from "components/features/auth/register"
+import {useHandleRegister} from "components/services/features/auth/register"
 
 import {Footer} from "../ui/footer";
 import {TextNavLink} from "../ui/text-nav-link";
@@ -43,8 +41,7 @@ export const SignupForm = ()=> {
                     errorText={'Ошибка'}
                     size={'default'}
                     extraClass="mt-6"
-                    required
-                />
+                    required onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                />
                 <EmailInput
                     placeholder={'E-mail'}
                     onChange={onChange}

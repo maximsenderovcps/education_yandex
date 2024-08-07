@@ -13,8 +13,6 @@ import {basketActions, selectSelectedProductsState} from "entities/basket";
 import {CardPosition} from "./position/position";
 import {Order} from "./order/order";
 
-// import {ProductsContext} from "entities/products";
-
 import styles from './constructor-burger.module.css'
 
 

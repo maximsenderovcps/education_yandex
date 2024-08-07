@@ -5,20 +5,18 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {Modal} from "components/shared/ui";
 import {RoutesPath} from "components/shared/configs";
 
-import {useAppDispatch, useAppSelector} from "components/providers/store";
+import {useAppDispatch, useAppSelector} from "components/services/providers/store";
 
 import {
     ingredientDetailsActions,
     selectCurrentIngredientDetailsState
-} from "components/entities/products/ingredient-details";
+} from "entities/products/ingredient";
 
-import {useGetProductsQuery} from "components/entities/products";
+import {useGetProductsQuery} from "entities/products";
 
-import {IngredientDetails} from "components/widgets/burger-ingredients";
+import {BurgerIngredients} from "components/sections/ingredients-burger";
 
 import styles from './ingredient-details-page.module.css'
-
-
 
 export const IngredientDetailsPage = () => {
     const dispatch = useAppDispatch()
@@ -62,12 +60,12 @@ export const IngredientDetailsPage = () => {
             {!details && <div>Не найден такой ингредиент</div>}
             {isOpenModal && background && details?._id &&
                 <Modal onClose={handleClose} extraClassContent="pb-5">
-                    <IngredientDetails details={details}/>
+                    <BurgerIngredients details={details}/>
                 </Modal>
             }
             {!isOpenModal && details?._id &&
                 <section className={styles.page}>
-                    <IngredientDetails details={details}/>
+                    <BurgerIngredients details={details}/>
                 </section>
             }
         </>

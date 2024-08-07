@@ -2,11 +2,12 @@ import React from 'react'
 
 import {Button, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components"
 
-import {EmailInput, ErrorText} from "components/shared/ui"
-import {useForm} from "components/shared/hooks"
+import {ErrorText} from "components/shared/ui/error-text/error-text";
+import {EmailInput} from "components/shared/ui/email-input/email-input";
+import {useForm} from "components/shared/hooks/useForm"
 import {RoutesPath} from "components/shared/configs";
 
-import {useHandleLogin} from "components/features/auth/login"
+import {useHandleLogin} from "components/services/features/auth/login"
 
 import {Footer} from "../ui/footer";
 import {TextNavLink} from "../ui/text-nav-link";

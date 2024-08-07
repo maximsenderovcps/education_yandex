@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react'
 
-import {clx} from "components/shared/utils";
+import {clName} from "components/shared/utils";
 
-import {SignupForm} from "components/widgets/auth/signup-form";
+import {SignupForm} from "components/sections/auth/signup-form";
 
 import styles from "./signup-page.module.css"
 
@@ -11,7 +11,7 @@ export const SignupPage = ()=>{
 
     return(
         <section className={styles.container}>
-            <p className={clx(styles.title, ["text text_type_main-medium"])}>
+            <p className={clName(styles.title, ["text text_type_main-medium"])}>
                 Регистрация
             </p>
             <SignupForm />

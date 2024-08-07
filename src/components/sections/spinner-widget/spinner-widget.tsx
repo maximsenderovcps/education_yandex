@@ -1,10 +1,10 @@
 import React from 'react'
 import {useSelector} from "react-redux";
 
-import {Spinner} from "components/shared/ui";
+import {Spinner} from "components/shared/ui/spinner/spinner";
 
-import {selectIsLoading} from "components/entities/spinner";
-import {selectText} from "components/entities/spinner";
+import {selectIsLoading} from "entities/spinner";
+import {selectText} from "entities/spinner";
 
 
 

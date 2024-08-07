@@ -11,7 +11,7 @@ import { useGetProductsQuery } from "entities/products";
 
 import {useTabScroll} from "./hook/useTabScroll";
 
-import styles from './burger-ingredients.module.css'
+import styles from './ingredients-burger.module.css'
 
 export const BurgerIngredients = () => {
     const [currentTab, scrollRef, categoriesRefs, onClickTabCategory] = useTabScroll('bun', 70)

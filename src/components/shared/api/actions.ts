@@ -6,7 +6,7 @@ export const invalidateAccessTokenAction = createAction(
 )
 
 export const refreshTokenAction = () =>{
-    const {refreshTokenThunk} = require("components/features/auth/refresh-token");
+    const {refreshTokenThunk} = require("components/services/features/auth/refresh-token");
     return refreshTokenThunk()
 }
 

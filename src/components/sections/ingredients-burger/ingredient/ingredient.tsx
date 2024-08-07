@@ -4,7 +4,7 @@ import {clName} from "components/shared/utils";
 
 import {IProduct} from "entities/products";
 
-import styles from './ingredient-details.module.css'
+import styles from './ingredient.module.css'
 
 interface IIngredientDetailsProps {
     details:  IProduct

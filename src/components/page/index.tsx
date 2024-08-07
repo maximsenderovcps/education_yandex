@@ -15,7 +15,7 @@ import {Content} from "components/sections/content";
 import {LeftHeader} from "components/sections/profile/left-header";
 import {ProfileForm} from "components/sections/profile/profile-form";
 
-import {BurgerConstructorPage} from "./page-constructor-burger/page-constructor-burger";
+import {PageConstructorBurger} from "./page-constructor-burger/page-constructor-burger";
 import {IngredientDetailsPage} from "./page-ingredient-details";
 
 import {LoginPage} from "./page-auth/page-login";
@@ -32,7 +32,7 @@ export const Pages = () => {
             <AppHeader/>
             <Content>
                 <Routes>
-                    <Route path='/' element={<BurgerConstructorPage/>}>
+                    <Route path='/' element={<PageConstructorBurger/>}>
                         <Route path={RoutesPath.ingredient_detail} element={<IngredientDetailsPage  />}/>
                     </Route>
 

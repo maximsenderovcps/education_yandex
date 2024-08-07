@@ -60,12 +60,12 @@ export const IngredientDetailsPage = () => {
             {!details && <div>Не найден такой ингредиент</div>}
             {isOpenModal && background && details?._id &&
                 <Modal onClose={handleClose} extraClassContent="pb-5">
-                    <BurgerIngredients details={details}/>
+                    <BurgerIngredients />
                 </Modal>
             }
             {!isOpenModal && details?._id &&
                 <section className={styles.page}>
-                    <BurgerIngredients details={details}/>
+                    <BurgerIngredients />
                 </section>
             }
         </>

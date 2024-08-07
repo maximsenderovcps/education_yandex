@@ -12,7 +12,7 @@ import {BurgerConstructor} from "components/sections/constructor-burger";
 
 import styles from './page-constructor-burger.module.css'
 
-export const BurgerConstructorPage = () => {
+export const PageConstructorBurger = () => {
     const isModalMatch = Boolean(useMatch(RoutesPath.ingredient_detail))
     const {isOpen: isOpenModal} = useAppSelector(selectCurrentIngredientDetailsState)
 

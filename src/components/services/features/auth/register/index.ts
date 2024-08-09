@@ -1,0 +1,1 @@
+export {useHandleRegister} from "./hooks";

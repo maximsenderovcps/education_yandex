@@ -1,0 +1,16 @@
+.alert {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    /*padding: 1rem 1rem;*/
+    border: 1px solid transparent;
+    border-radius: 0.50rem;
+}
+
+.alert_warn {
+    text-align: center;
+    color: #ada985;
+    /*color: #842029;*/
+    /*background-color:  #f8d7da;*/
+    border-color: #f5eec2;
+}

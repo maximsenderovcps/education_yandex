@@ -1,0 +1,2 @@
+export {useUpdateProfile} from "./hooks";
+

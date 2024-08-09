@@ -40,7 +40,7 @@ export const BurgerConstructor = () => {
 
     const selectedIngredientsDocs = useMemo(()=>{
         if (products.length && selectedIngredients.length)
-            return selectedIngredients.reduce((previousValue: IProduct[], currentValue, index: number):IProduct[] => {
+            return selectedIngredients.reduce((previousValue: IProduct[], currentValue: { id: string; uuid: any; }, index: number):IProduct[] => {
                 const found = {
                     ...products.find((p)=>p._id === currentValue.id)!,
                     uuid: currentValue.uuid
@@ -104,7 +104,7 @@ export const BurgerConstructor = () => {
                            Перетащите сюда ингредиент
                        </p>
                    }
-                   {selectedIngredientsDocs.map((v, index)=>
+                   {selectedIngredientsDocs.map((v:any, index:any)=>
                        <CardPosition
                            id={v._id}
                            index={index}

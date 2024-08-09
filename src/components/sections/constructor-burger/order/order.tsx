@@ -36,7 +36,7 @@ export const Order: FC<PropsWithChildren>= ({children}) =>{
         if (!isAuthed)
             navigate(RoutesPath.login)
 
-        let ingredients = selectedIngredients.reduce((prev: string[], current): string[]=>{
+        let ingredients = selectedIngredients.reduce((prev: string[], current:any): string[]=>{
             prev = prev.concat([current.id])
             return prev
         }, [] as string[])

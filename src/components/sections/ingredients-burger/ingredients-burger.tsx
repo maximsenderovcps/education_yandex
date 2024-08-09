@@ -43,7 +43,7 @@ export const BurgerIngredients = () => {
                     {
                         productsOfCat.map((prod => {
                             // Counter products
-                            const count = selectedIngredients.filter((v)=>v.id===prod._id).length +
+                            const count = selectedIngredients.filter((v:any)=>v.id===prod._id).length +
                                 (selectedBun === prod._id ? 1 : 0)
 
                             return (

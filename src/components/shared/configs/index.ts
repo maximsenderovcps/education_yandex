@@ -1,0 +1,1 @@
+export {RoutesPath} from "./routes";

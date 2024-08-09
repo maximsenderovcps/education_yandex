@@ -11,7 +11,7 @@ const initialState = {
 }
 
 
-export const IngredientDetailsSlice = createSlice({
+export const slice = createSlice({
     name: 'ingredientDetails',
     initialState,
     reducers: {
@@ -27,4 +27,4 @@ export const IngredientDetailsSlice = createSlice({
 })
 
 
-export const { actions: ingredientDetailsActions } = IngredientDetailsSlice;
+export const { actions: ingredientDetailsActions } = slice;

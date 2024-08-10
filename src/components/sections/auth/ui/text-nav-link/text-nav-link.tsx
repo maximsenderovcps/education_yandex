@@ -1,8 +1,6 @@
 import React, {FC} from 'react'
 import {ButtonLink} from "components/shared/ui";
 
-// import styles from './text-nav-link.module.css'
-
 
 interface TextNavLinkProps {
     pretext: string

@@ -54,7 +54,7 @@ export const ForgotForm = ()=>{
             <Footer>
                 <TextNavLink
                     pretext={'Вспомнили пароль?'}
-                    to={RoutesPath.login}
+                    to={RoutesPath.LOGIN}
                     text={'Войти'}
                 />
             </Footer>

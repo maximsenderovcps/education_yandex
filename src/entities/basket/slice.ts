@@ -43,7 +43,8 @@ export const basketSlice = createSlice({
 
         delete(state, action: PayloadAction<IndexType>) {
             state.data.ingredients = state.data.ingredients.filter((v, index)=>index !== action.payload)
-        }
+        },
+        clean: ()=> initialState
     }
 })
 

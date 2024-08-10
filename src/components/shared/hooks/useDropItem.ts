@@ -1,24 +1,24 @@
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {useDrop} from "react-dnd";
 
-interface DragItem {
+interface IDragItem {
   id: string
 }
 
 export const useDropItem = (
     dragTypes: string[],
     onDrop: (id: string)=>void
-) => {
-    const dropRef = useRef<HTMLElement>(null)
+):[React.RefObject<HTMLDivElement>, boolean] => {
+    const dropRef = useRef<HTMLDivElement>(null)
 
-    const [{canDrop}, drop] = useDrop<DragItem, void, { canDrop: boolean; }>({
+    const [{canDrop}, drop] = useDrop<IDragItem, void, { canDrop: boolean; }>({
         accept: dragTypes,
         collect(monitor) {
             return {
                 canDrop: monitor.canDrop()
             }
         },
-        drop(item: DragItem, monitor) {
+        drop(item: IDragItem, monitor) {
             onDrop(item.id)
         },
     });

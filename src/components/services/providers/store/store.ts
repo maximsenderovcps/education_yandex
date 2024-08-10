@@ -1,5 +1,4 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-
 import type {} from 'redux-thunk/extend-redux'
 import logger from 'redux-logger'
 import {

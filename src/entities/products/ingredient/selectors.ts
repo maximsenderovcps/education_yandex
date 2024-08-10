@@ -1,3 +1,5 @@
 import {RootStateType} from "components/services/providers/store";
 
-export const selectCurrentIngredientDetailsState = (state: RootStateType) => state.ingredientDetails.data
+import {IIngredientDetails} from "./context";
+
+export const selectCurrentIngredientDetailsState = (state: RootStateType): IIngredientDetails => state.ingredientDetails.data;

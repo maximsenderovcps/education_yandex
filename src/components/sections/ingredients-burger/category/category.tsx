@@ -1,5 +1,4 @@
 import React, {FC, PropsWithChildren} from "react";
-import PropTypes from "prop-types";
 
 import styles from './category.module.css'
 
@@ -25,9 +24,3 @@ return (
         </div>
     )
 };
-
-Category.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
-    extraClass: PropTypes.string
-}

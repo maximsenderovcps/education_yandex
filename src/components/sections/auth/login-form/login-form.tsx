@@ -57,12 +57,12 @@ export const LoginForm = ()=>{
             <Footer>
                 <TextNavLink
                     pretext={'Вы — новый пользователь?'}
-                    to={RoutesPath.register}
+                    to={RoutesPath.REGISTER}
                     text={'Зарегистрироваться'}
                 />
                 <TextNavLink
                     pretext={'Забыли пароль?'}
-                    to={RoutesPath.forgot}
+                    to={RoutesPath.FORGOT}
                     text={'Восстановить пароль'}
                     extraClass="mt-4"
                 />

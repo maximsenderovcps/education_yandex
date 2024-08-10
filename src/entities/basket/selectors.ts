@@ -1,3 +1,5 @@
 import {RootStateType} from "components/services/providers/store";
 
-export const selectSelectedProductsState = (state: RootStateType) => state.basket.data
+import {IBasket} from "./context";
+
+export const selectSelectedProductsState = (state: RootStateType): IBasket => state.basket.data

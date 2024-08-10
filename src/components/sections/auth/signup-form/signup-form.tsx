@@ -72,7 +72,7 @@ export const SignupForm = ()=> {
             <Footer>
                 <TextNavLink
                     pretext={"Уже зарегистрированы?"}
-                    to={RoutesPath.login}
+                    to={RoutesPath.LOGIN}
                     text={'Войти'}
                 />
             </Footer>

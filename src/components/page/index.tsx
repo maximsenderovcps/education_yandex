@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route, Routes} from 'react-router-dom'
 
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 
 import {RequireGuest} from "components/services/features/auth/require-guest";
 import {RequireAuth} from "components/services/features/auth/require-auth";
@@ -33,24 +33,24 @@ export const Pages = () => {
             <Content>
                 <Routes>
                     <Route path='/' element={<PageConstructorBurger/>}>
-                        <Route path={RoutesPath.ingredient_detail} element={<IngredientDetailsPage  />}/>
+                        <Route path={ROUTES.INGREDIENT_DETAIL} element={<IngredientDetailsPage  />}/>
                     </Route>
 
                     {/*Guest pages*/}
                     <Route element={<RequireGuest/>}>
-                        <Route path={RoutesPath.login} element={<LoginPage/>}/>
-                        <Route path={RoutesPath.register} element={<SignupPage/>}/>
-                        <Route path={RoutesPath.forgot} element={<ForgotPage/>}/>
-                        <Route path={RoutesPath.reset} element={<ResetPage/>}/>
+                        <Route path={ROUTES.LOGIN} element={<LoginPage/>}/>
+                        <Route path={ROUTES.REGISTER} element={<SignupPage/>}/>
+                        <Route path={ROUTES.FORGOT} element={<ForgotPage/>}/>
+                        <Route path={ROUTES.RESET} element={<ResetPage/>}/>
                     </Route>
-                    <Route path={RoutesPath.logout} element={<Logout/>}/>
+                    <Route path={ROUTES.LOGOUT} element={<Logout/>}/>
 
                     {/*Only Auth*/}
                     <Route element={<RequireAuth/>}>
-                        <Route path={RoutesPath.application_tape} element={<p>В разработке...</p>}/>
+                        <Route path={ROUTES.APPLICATION_TAPE} element={<p>В разработке...</p>}/>
                         <Route element={<LeftHeader/>}>
-                            <Route path={RoutesPath.profile} element={<ProfileForm/>}/>
-                            <Route path={RoutesPath.orders_in_profile} element={<p>В разработке...</p>}/>
+                            <Route path={ROUTES.PROFILE} element={<ProfileForm/>}/>
+                            <Route path={ROUTES.ORDERS_IN_PROFILE} element={<p>В разработке...</p>}/>
                         </Route>
                     </Route>
 

@@ -3,7 +3,7 @@ import {Outlet, useMatch} from "react-router-dom";
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 import {useAppSelector} from "components/services/providers/store";
 import {selectCurrentIngredientDetailsState} from "entities/products/ingredient";
 
@@ -13,7 +13,7 @@ import {BurgerConstructor} from "components/sections/constructor-burger";
 import styles from './page-constructor-burger.module.css'
 
 export const PageConstructorBurger = () => {
-    const isModalMatch = Boolean(useMatch(RoutesPath.ingredient_detail))
+    const isModalMatch = Boolean(useMatch(ROUTES.INGREDIENT_DETAIL))
     const {isOpen: isOpenModal} = useAppSelector(selectCurrentIngredientDetailsState)
 
     return(

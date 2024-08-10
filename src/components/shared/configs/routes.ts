@@ -1,4 +1,4 @@
-export const RoutesPath:Record<string, string> = {
+export const ROUTES:Record<string, string> = {
     HOME: "/",
 
     // Auth

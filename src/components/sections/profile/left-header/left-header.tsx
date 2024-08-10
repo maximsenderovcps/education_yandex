@@ -2,7 +2,7 @@ import React from "react";
 import {Outlet } from "react-router-dom"
 
 import {ButtonLink} from "components/shared/ui";
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 
 import styles from './left-header.module.css'
 
@@ -12,13 +12,13 @@ export const LeftHeader = () => {
         <section className={styles.container + " p-10"}>
             <section>
                 <nav className={styles.header}>
-                    <ButtonLink to={RoutesPath.profile} size="large">
+                    <ButtonLink to={ROUTES.PROFILE} size="large">
                         Профиль
                     </ButtonLink>
-                    <ButtonLink to={RoutesPath.orders_in_profile} size="large">
+                    <ButtonLink to={ROUTES.ORDERS_IN_PROFILE} size="large">
                         История заказов
                     </ButtonLink>
-                    <ButtonLink to={RoutesPath.logout} size="large">
+                    <ButtonLink to={ROUTES.LOGOUT} size="large">
                         Выход
                     </ButtonLink>
                 </nav>

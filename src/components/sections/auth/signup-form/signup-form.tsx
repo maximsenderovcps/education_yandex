@@ -5,7 +5,7 @@ import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger
 import {ErrorText} from "components/shared/ui/error-text/error-text";
 import {EmailInput} from "components/shared/ui/email-input/email-input";
 import {useForm} from "components/shared/hooks/useForm";
-import {RoutesPath} from "components/shared/configs"
+import {ROUTES} from "components/shared/configs"
 
 import {useHandleRegister} from "components/services/features/auth/register"
 
@@ -72,7 +72,7 @@ export const SignupForm = ()=> {
             <Footer>
                 <TextNavLink
                     pretext={"Уже зарегистрированы?"}
-                    to={RoutesPath.LOGIN}
+                    to={ROUTES.LOGIN}
                     text={'Войти'}
                 />
             </Footer>

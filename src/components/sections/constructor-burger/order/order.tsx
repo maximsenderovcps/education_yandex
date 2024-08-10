@@ -7,7 +7,7 @@ import {clName} from "components/shared/utils";
 import {Modal} from "components/shared/ui/modal/modal";
 import {ErrorText} from "components/shared/ui/error-text/error-text";
 import {useVisible} from "components/shared/hooks/useVisible";
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 
 import {selectIsAuthed} from "entities/session";
 import {spinnerActions} from "entities/spinner";
@@ -15,8 +15,8 @@ import {spinnerActions} from "entities/spinner";
 import {basketActions, selectSelectedProductsState} from "entities/basket";
 import {usePostOrderMutation} from "components/services/features/order";
 
-import CheckImage from 'images/check.png'
-import styles from './order.module.css'
+import CheckImage from "/images/check.png"
+import styles from "./order.module.css"
 
 
 export const Order: FC<PropsWithChildren>= ({children}) =>{
@@ -34,7 +34,7 @@ export const Order: FC<PropsWithChildren>= ({children}) =>{
 
     const handleFetch = useCallback(async ()=>{
         if (!isAuthed)
-            navigate(RoutesPath.LOGIN)
+            navigate(ROUTES.LOGIN)
 
         if (!Boolean(selectedBun && selectedIngredients.length))
             return

@@ -1,14 +1,18 @@
-import {useRef} from "react";
-import {useDrag, useDrop} from "react-dnd";
-import {Identifier, XYCoord} from "dnd-core";
+import React, {useRef} from "react";
+import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
+import {XYCoord} from "dnd-core";
 
 
-interface DragItem {
+interface IDragItem {
     uuid: string
     index: number
     hoverIndex: number
     id: string
 }
+
+type TDragRef = React.RefObject<HTMLDivElement>
+type TDropRef = React.RefObject<HTMLDivElement>
+type TIsDragging = boolean
 
 export const useDragDropItem = (
     dropTypes: string[],
@@ -17,18 +21,18 @@ export const useDragDropItem = (
     uuid: string,
     dragType: string,
     onHover: (fromUUID: string, toIndex: number)=>void
-) => {
-    const dragRef = useRef<HTMLElement>(null)
-    const dropRef = useRef<HTMLElement>(null)
+): [TDragRef, TDropRef, TIsDragging, unknown] => {
+    const dragRef = useRef<HTMLDivElement>(null)
+    const dropRef = useRef<HTMLDivElement>(null)
 
-    const [{handlerId}, drop] = useDrop<DragItem, void, { handlerId: Identifier | null; }>({
+    const [_, drop] = useDrop<IDragItem, void, unknown>({
         accept: dropTypes,
         collect(monitor) {
             return {
                 handlerId: monitor.getHandlerId(),
             }
         },
-        hover(item: DragItem, monitor) {
+        hover(item: IDragItem, monitor) {
             if (!dropRef.current) {
                 return
             }
@@ -80,10 +84,10 @@ export const useDragDropItem = (
 
     const [{isDragging}, drag, preview] = useDrag(()=>({
         type: dragType,
-        collect: (monitor: any) => ({
+        collect: (monitor: DragSourceMonitor<IDragItem, unknown>) => ({
             isDragging: monitor.isDragging(),
         }),
-        item: (): DragItem => {
+        item: (): IDragItem => {
             return {id, index, uuid, hoverIndex: index}
         },
         end: (item, monitor) => {
@@ -99,5 +103,5 @@ export const useDragDropItem = (
     drop(dropRef)
     preview(dropRef)
 
-    return [dragRef, dropRef, isDragging]
+    return [dragRef, dropRef, isDragging, _]
 };

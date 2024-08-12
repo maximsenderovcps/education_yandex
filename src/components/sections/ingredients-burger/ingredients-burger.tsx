@@ -12,6 +12,7 @@ import { useGetProductsQuery } from "entities/products";
 import {useTabScroll} from "./hook/useTabScroll";
 
 import styles from './ingredients-burger.module.css'
+import {ErrorText} from "../../shared/ui";
 
 export const BurgerIngredients = () => {
     const [currentTab, scrollRef, categoriesRefs, onClickTabCategory] = useTabScroll('bun', 70)
@@ -19,6 +20,8 @@ export const BurgerIngredients = () => {
 
     const {
         data: products = [],
+        isError,
+        error
     } = useGetProductsQuery()
 
     const categoriesData = useMemo(()=>[
@@ -80,8 +83,8 @@ export const BurgerIngredients = () => {
                 }
             </div>
 
-            <div className={styles.box + ' mt-10'} ref={scrollRef}>
-                { productsElements }
+             <div className={styles.box + ' mt-10'} ref={scrollRef}>
+                { isError ?  <ErrorText message={(error as any)?.error} extraClass="mt-6"/> : productsElements}
             </div>
         </section>
     );

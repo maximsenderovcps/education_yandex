@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {Navigate} from "react-router-dom";
 
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 import {useAppSelector} from "components/services/providers/store";
 import {selectRefreshToken} from "entities/session";
 
@@ -19,6 +19,6 @@ export const Logout = () => {
     return (
         refreshToken
             ? null
-            : <Navigate to={RoutesPath.login} replace/>
+            : <Navigate to={ROUTES.LOGIN} replace/>
     )
 }

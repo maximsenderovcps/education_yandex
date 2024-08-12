@@ -2,7 +2,7 @@ import React from 'react'
 import {Navigate} from "react-router-dom";
 import {Button} from "@ya.praktikum/react-developer-burger-ui-components"
 
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 import {ErrorText} from "components/shared/ui/error-text/error-text";
 import {EmailInput} from "components/shared/ui/email-input/email-input";
 import {WarningText} from "components/shared/ui/warning-text/warning-text";
@@ -26,7 +26,7 @@ export const ForgotForm = ()=>{
         <>
             {response.isLoading && <div>Loading...</div>}
             {response.data?.success &&
-                <Navigate to={RoutesPath.reset}
+                <Navigate to={ROUTES.RESET}
                           state={{ sentEmail:  response.data?.success}} replace/>
             }
             <WarningText message={response.data?.message} extraClass="mt-6"/>
@@ -54,7 +54,7 @@ export const ForgotForm = ()=>{
             <Footer>
                 <TextNavLink
                     pretext={'Вспомнили пароль?'}
-                    to={RoutesPath.login}
+                    to={ROUTES.LOGIN}
                     text={'Войти'}
                 />
             </Footer>

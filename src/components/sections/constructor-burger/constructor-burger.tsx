@@ -16,6 +16,7 @@ import {Order} from "./order/order";
 import styles from './constructor-burger.module.css'
 
 
+
 export const BurgerConstructor = () => {
     const dispatch = useAppDispatch()
     const {data: products = []} = useGetProductsQuery()
@@ -32,6 +33,10 @@ export const BurgerConstructor = () => {
 
     const [dropRef, canDrop] = useDropItem(['bun', 'sauce', 'main'], handleDropItem)
 
+    const isFillBasket = useMemo(
+        ()=>!Boolean(selectedBun && selectedIngredients.length),
+    [selectedBun, selectedIngredients])
+
     const selectedBunDoc = useMemo(()=>{
         if (products && selectedBun)
             return products.find((p)=>p._id === selectedBun)
@@ -40,7 +45,7 @@ export const BurgerConstructor = () => {
 
     const selectedIngredientsDocs = useMemo(()=>{
         if (products.length && selectedIngredients.length)
-            return selectedIngredients.reduce((previousValue: IProduct[], currentValue: { id: string; uuid: any; }, index: number):IProduct[] => {
+            return selectedIngredients.reduce((previousValue: IProduct[], currentValue, index: number):IProduct[] => {
                 const found = {
                     ...products.find((p)=>p._id === currentValue.id)!,
                     uuid: currentValue.uuid
@@ -72,8 +77,8 @@ export const BurgerConstructor = () => {
 
    return (
        <section>
-           <div className={styles.content + ' pl-4 mb-10'} ref={dropRef as React.RefObject<HTMLDivElement>}>
-               {canDrop && <div className={styles.drop_place}>
+           <div className={styles.content + ' pl-4 mb-10'} ref={dropRef}>
+               {!selectedIngredientsDocs.length && canDrop && <div className={styles.drop_place}>
                    <p className={clName('text text_type_main-medium', [], {'text_color_inactive': !canDrop})}>
                        Перетащите сюда ингредиент
                    </p>
@@ -104,7 +109,7 @@ export const BurgerConstructor = () => {
                            Перетащите сюда ингредиент
                        </p>
                    }
-                   {selectedIngredientsDocs.map((v:any, index:any)=>
+                   {selectedIngredientsDocs.map((v, index)=>
                        <CardPosition
                            id={v._id}
                            index={index}
@@ -137,7 +142,7 @@ export const BurgerConstructor = () => {
                    <CurrencyIcon type="primary" /></p>
                </span>
                <Order>
-                   <Button htmlType={'button'}>Оформить заказ</Button>
+                   <Button htmlType={'button'} disabled={isFillBasket}>Оформить заказ</Button>
                </Order>
            </div>
        </section>

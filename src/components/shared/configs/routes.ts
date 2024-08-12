@@ -1,18 +1,18 @@
-export const RoutesPath = {
-    home: "/",
+export const ROUTES:Record<string, string> = {
+    HOME: "/",
 
     // Auth
-    login: "/login",
-    logout: "/logout",
-    register: "/register",
-    forgot: "/forgot-password",
-    reset: "/reset-password",
+    LOGIN: "/login",
+    LOGOUT: "/logout",
+    REGISTER: "/register",
+    FORGOT: "/forgot-password",
+    RESET: "/reset-password",
 
     //
-    application_tape: "/application_tape",
-    ingredient_detail: "/ingredients/:id",
+    APPLICATION_TAPE: "/application_tape",
+    INGREDIENT_DETAIL: "/ingredients/:id",
 
     // Profile
-    profile: "/profile",
-    orders_in_profile: "/profile/orders",
+    PROFILE: "/profile",
+    ORDERS_IN_PROFILE: "/profile/orders",
 }

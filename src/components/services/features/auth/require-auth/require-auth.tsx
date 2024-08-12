@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from "react-redux"
 import { useLocation, Navigate, Outlet } from "react-router-dom"
 
-import {RoutesPath} from "components/shared/configs";
+import {ROUTES} from "components/shared/configs";
 
 import {selectIsAuthChecked, selectIsAuthed} from "entities/session";
 
@@ -23,6 +23,6 @@ export const RequireAuth = () => {
     return (
         isAuthed
             ? <Outlet />
-            : <Navigate to={RoutesPath.login} state={{ from: location }} replace />
+            : <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />
    )
 }

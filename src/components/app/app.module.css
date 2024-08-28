@@ -9,6 +9,7 @@
 ::-webkit-scrollbar-thumb {
   background-color: #8585AD;
 }
+
 html{
   overflow-y: auto;
   overscroll-behavior: contain;

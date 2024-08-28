@@ -1,0 +1,16 @@
+.name{
+    max-width: 600px;
+}
+
+.text_status_done{
+    color: var(--colors-interface-success);
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+}

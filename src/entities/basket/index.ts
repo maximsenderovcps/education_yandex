@@ -1,3 +1,3 @@
 export type {IBasket} from "./context";
-export {basketActions} from "./slice";
+export {basketSlice, basketActions} from "./slice";
 export {selectSelectedProductsState} from "./selectors";

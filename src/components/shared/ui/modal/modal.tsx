@@ -1,4 +1,4 @@
-import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef} from "react";
+import React, {FC, SyntheticEvent, useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
 
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
@@ -30,16 +30,16 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
         modalRef.current?.showModal()
         modalRef.current?.focus()
 
-        const handleCloseByKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLDialogElement>) => {
+        const handleCloseByKeyDown = (e: KeyboardEvent) => {
             if (e.code === 'Escape')
                 onClose()
         }
 
-        window.addEventListener('keyup', handleCloseByKeyDown as any)
+        window.addEventListener('keyup', handleCloseByKeyDown )
 
         return () => {
             bodyRef.current.style.overflow = ''
-            window.removeEventListener('keyup', handleCloseByKeyDown as any)
+            window.removeEventListener('keyup', handleCloseByKeyDown )
         }
     }, [bodyRef, modalRef])
 

@@ -16,7 +16,7 @@ export const AppHeader = ()=>{
                         Конструктор
                     </ButtonLink>
                     <ButtonLink to={ROUTES.APPLICATION_TAPE} icon="list" isParentLink>
-                        Лента заявок
+                        Лента заказов
                     </ButtonLink>
                 </div>
                 <div className={styles.brand}>

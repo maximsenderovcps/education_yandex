@@ -1,10 +1,12 @@
 .buttonLink {
 	display: inline-block;
+
 	border: none;
 	cursor: pointer;
 	outline: none;
 	border-radius: var(--common-border-radius);
 	transition: var(--common-transition);
+
 	text-decoration: none;
 }
 
@@ -37,6 +39,7 @@
 
 .buttonLink_type_primary:active {
 	opacity: 0.9;
+	/*background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(63.18deg, #801AB3 0%, #4C4CFF 100%);*/
 }
 
 .buttonLink_type_secondary {
@@ -55,7 +58,7 @@
 
 .buttonLink_size_large {
 	font-family: 'Jet Brains Mono', sans-serif;
-	font-size: 16px;
+	font-size: 24px;
 	line-height: 1.5;
 	font-weight: normal;
 	padding: 20px 40px;
@@ -74,6 +77,11 @@
 	font-weight: normal;
 	padding: 10px 20px;
 }
+
+.buttonLink_type_secondary:is(.buttonLink_size_small, .buttonLink_size_medium, .buttonLink_size_large){
+	padding: 0 8px;
+}
+
 .buttonLink_type_primary[disabled] {
 	color: var(--text-inactive-color);
 	background: inherit;

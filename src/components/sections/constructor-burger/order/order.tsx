@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "components/services/providers/store";
 
-//import {clName} from "components/shared/utils";
+import {clName} from "components/shared/utils";
 import {Modal} from "components/shared/ui/modal/modal";
 import {ErrorText} from "components/shared/ui/error-text/error-text";
 import {useVisible} from "components/shared/hooks/useVisible";
@@ -15,7 +15,7 @@ import {spinnerActions} from "entities/spinner";
 import {basketActions, selectSelectedProductsState} from "entities/basket";
 import {usePostOrderMutation} from "components/services/features/order";
 
-//import CheckImage from '/images/check.png'
+import CheckImage from '/images/check.png'
 import styles from "./order.module.css"
 
 
@@ -65,8 +65,8 @@ export const Order: FC<PropsWithChildren>= ({children}) =>{
 
                     <p className={'text text_type_digits-large'}>{order_id}</p>
                     <p className={'text text_type_main-medium mt-8'}>идентификатор заказа</p>
-                    {response.isSuccess //&&
-                        //<img className={clName(styles.img, ['mt-15', 'mb-15'])} src={CheckImage} alt={'check'}/>
+                    {response.isSuccess &&
+                        <img className={clName(styles.img, ['mt-15', 'mb-15'])} src={CheckImage} alt={'check'}/>
                     }
                     <p className={'text text_type_main-default mb-2'}>Ваш заказ начали готовить</p>
                     <p className={'text text_type_main-default text_color_inactive'}>

@@ -1,4 +1,4 @@
-import {RootStateType} from "components/providers/store";
+import {RootStateType} from "components/services/providers/store";
 
 
 // export const selectIsStreamingOrdersAllOfUser = (state: RootStateType) => state.ordersAllOfUser.isStreaming;

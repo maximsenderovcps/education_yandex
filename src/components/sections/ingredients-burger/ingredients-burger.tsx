@@ -37,8 +37,11 @@ export const BurgerIngredients = () => {
         },
     ], [])
 
-    const productsElements = useMemo(()=> categoriesData.map((category, index)=>{
-        const productsOfCat = products.filter((v)=>v.type===category.name)
+    const productsElements = useMemo<false | JSX.Element[]>(()=>
+        !!products.length &&
+        categoriesData.map((category, index)=>
+        {
+            const productsOfCat = products.filter((v)=>v.type===category.name)
 
         return (
             <div key={category.name} ref={el => categoriesRefs.current[category.name] = el! }>

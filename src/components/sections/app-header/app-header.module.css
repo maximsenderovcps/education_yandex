@@ -22,6 +22,12 @@ header {
     }
 }
 
+@media (min-width: 1400px) {
+    .navbar {
+        max-width: 1280px;
+    }
+}
+
 .brand{
     position: absolute;
     left: calc(50vw - 290px/2);

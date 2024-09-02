@@ -1,0 +1,52 @@
+.content{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-width: 600px;
+}
+
+.content_orders_with_statuses{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.content_orders_status{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: inherit;
+
+    width: 300px;
+}
+
+.content_orders_status_done{
+    composes: content_orders_status;
+}
+
+.content_orders_status_pending{
+    composes: content_orders_status;
+}
+
+.items_orders_status{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    height: calc((24.08px + var(--offset-base-size) * 2) * 10);
+}
+
+.items_orders_status_done{
+    composes: items_orders_status;
+
+    color: var(--colors-interface-success);
+}
+
+.items_orders_status_pending{
+    composes: items_orders_status;
+}
+

@@ -16,7 +16,7 @@ import {LeftHeader} from "components/sections/profile/left-header";
 import {ProfileForm} from "components/sections/profile/profile-form";
 import {ListOrders as ProfileListOrders} from "components/sections/profile/list-orders";
 
-import {PageConstructorBurger} from "./page-constructor-burger/page-constructor-burger";
+import {PageConstructorBurger} from "./page-constructor-burger";
 import {IngredientDetailsPage} from "./page-ingredient-details";
 
 import {PageFeed} from "./page-feed";

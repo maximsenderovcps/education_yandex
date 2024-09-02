@@ -7,8 +7,6 @@ import styles from "./page-feed.module.css"
 import { Outlet } from "react-router-dom";
 
 
-
-
 export const PageFeed = () => {
     return(
         <>

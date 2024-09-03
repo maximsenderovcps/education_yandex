@@ -1,0 +1,25 @@
+.content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    width: calc(100% - var(--offset-base-size) * 6 * 2);
+
+    border-radius: var(--common-border-radius-s) var(--common-border-radius-s);
+    background-color: var(--background);
+
+    cursor: pointer;
+}
+
+.text_status_done{
+    color: var(--colors-interface-success);
+}
+
+.item_info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}

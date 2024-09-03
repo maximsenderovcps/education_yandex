@@ -1,0 +1,36 @@
+.content{
+    width: calc(100% - var(--offset-base-size) * 6);
+}
+
+.content > :nth-child(n + 2){
+    margin-top: calc(var(--offset-base-size) * 4);
+}
+
+.card_position, .card_position_caption{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    width: 100%;
+}
+
+.box {
+    max-height: calc(var(--offset-base-size) * 4 * 4 + 64px * 4);
+
+    min-height: 115px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+}

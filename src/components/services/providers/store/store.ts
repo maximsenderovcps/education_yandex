@@ -1,5 +1,4 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-import type {} from 'redux-thunk/extend-redux'
 import logger from 'redux-logger'
 import {
   persistStore,
@@ -13,6 +12,7 @@ import {
 
 import {baseApi} from "components/shared/api";
 import {reducersEntities} from "entities/index";
+import {ordersAllWSMiddleware, ordersAllOfUserWSMiddleware} from "entities/order";
 
 //Reducers
 export const rootReducers = combineReducers({
@@ -30,8 +30,10 @@ export const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }).concat(
-            logger,
+            //logger,
             baseApi.middleware,
+            ordersAllWSMiddleware,
+            ordersAllOfUserWSMiddleware
         ),
 })
 

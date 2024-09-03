@@ -3,7 +3,11 @@ import {IIngredientDetails} from "./context";
 import {IProduct} from "../index";
 
 
-const initialState = {
+type TIngredientDetailsState = {
+    data: IIngredientDetails
+}
+
+const initialState:TIngredientDetailsState = {
     data: {
         isOpen: false,
         details: {}

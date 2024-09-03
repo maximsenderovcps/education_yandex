@@ -12,7 +12,7 @@ import {
     selectCurrentIngredientDetailsState
 } from "entities/products/ingredient";
 
-import {useGetProductsQuery} from "entities/products";
+import {IProduct, useGetProductsQuery} from "entities/products";
 
 import {IngredientDetails} from "components/sections/ingredients-burger";
 
@@ -36,7 +36,7 @@ export const IngredientDetailsPage = () => {
         // error
     } = useGetProductsQuery()
 
-    const details = useMemo(()=>{
+    const details =  useMemo<IProduct | undefined>(()=>{
         if (!isOpenModal)
             if (products.length)
                 return products.find((v)=>v._id === id_param)!
@@ -44,7 +44,7 @@ export const IngredientDetailsPage = () => {
     },[currentDetails, products, isOpenModal])
 
 
-    useEffect(()=>{
+    useEffect((): void=>{
         if (!background)
             dispatch(ingredientDetailsActions.clean())
     },[dispatch, background])

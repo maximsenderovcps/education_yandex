@@ -1,0 +1,10 @@
+.content_images{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.content_images > :nth-child(n + 2){
+    margin-left: -20px;
+}

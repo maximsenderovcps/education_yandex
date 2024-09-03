@@ -10,12 +10,12 @@ import styles from './app-header.module.css'
 export const AppHeader = ()=>{
     return(
         <header>
-            <nav  className={styles.navbar + ' ' + 'pt-4 pb-4'}>
+            <nav  className={styles.navbar + ' pt-4 pb-4'}>
                 <div>
                     <ButtonLink to={ROUTES.HOME} extraClass={'mr-2'} icon="burger" isParentLink>
                         Конструктор
                     </ButtonLink>
-                    <ButtonLink to={ROUTES.APPLICATION_TAPE} icon="list" isParentLink>
+                    <ButtonLink to={ROUTES.FEED} icon="list" isParentLink>
                         Лента заявок
                     </ButtonLink>
                 </div>

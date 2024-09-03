@@ -12,3 +12,10 @@ export const API_PATH_RESET_PASSWORD = 'password-reset/reset'
 
 //Profile
 export const API_PATH_USER  = 'auth/user'
+
+//Websocket
+export const API_WS_URL = 'wss://norma.nomoreparties.space/'
+//Tape (Feed)
+export const API_WS_PATH_ALL_ORDERS = 'orders/all'
+//Profile
+export const API_WS_PATH_USER_ALL_ORDERS = 'orders?token=$(accessToken)'

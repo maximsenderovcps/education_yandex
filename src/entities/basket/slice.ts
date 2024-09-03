@@ -3,7 +3,11 @@ import { v4 as uuid4 } from 'uuid';
 
 import {IBasket, ISetIngredient} from "./context";
 
-const initialState = {
+type TBasketState = {
+    data: IBasket
+}
+
+const initialState: TBasketState = {
     data: {
         bun: null,
         ingredients: [],

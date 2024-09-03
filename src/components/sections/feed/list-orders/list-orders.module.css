@@ -1,0 +1,15 @@
+.box {
+    max-height: 74vh;
+
+    min-height: 100px;
+    width: 100%;
+    min-width: 300px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+.box > :nth-child(n + 2){
+    margin-top: calc(var(--offset-base-size) * 4);
+}

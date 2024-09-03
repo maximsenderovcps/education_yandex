@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route, Routes} from 'react-router-dom'
+import { Route, Routes, useNavigationType} from 'react-router-dom'
 
 import {ROUTES} from "components/shared/configs";
 
@@ -14,9 +14,14 @@ import {Content} from "components/sections/content";
 
 import {LeftHeader} from "components/sections/profile/left-header";
 import {ProfileForm} from "components/sections/profile/profile-form";
+import {ListOrders as ProfileListOrders} from "components/sections/profile/list-orders";
 
-import {PageConstructorBurger} from "./page-constructor-burger/page-constructor-burger";
+import {PageConstructorBurger} from "./page-constructor-burger";
 import {IngredientDetailsPage} from "./page-ingredient-details";
+
+import {PageFeed} from "./page-feed";
+
+import {PageOrderComposition} from "./page-order-composition";
 
 import {LoginPage} from "./page-auth/page-login";
 import {SignupPage} from "./page-auth/page-signup";
@@ -26,6 +31,7 @@ import {ResetPage} from "./page-auth/page-reset";
 
 
 export const Pages = () => {
+    const transitionType = useNavigationType()
     return (
         <>
             <SpinnerWidget/>
@@ -33,8 +39,15 @@ export const Pages = () => {
             <Content>
                 <Routes>
                     <Route path='/' element={<PageConstructorBurger/>}>
+                        {/* Popup */}
                         <Route path={ROUTES.INGREDIENT_DETAIL} element={<IngredientDetailsPage  />}/>
                     </Route>
+
+                    <Route path={ROUTES.FEED} element={<PageFeed/>}>
+                        {/* Popup */}
+                        {(transitionType !== 'POP') && <Route path={':id'} element={<PageOrderComposition  />}/>}
+                    </Route>
+                    {(transitionType === 'POP') && <Route path={ROUTES.ORDER_IN_FEED} element={<PageOrderComposition  />}/>}
 
                     {/*Guest pages*/}
                     <Route element={<RequireGuest/>}>
@@ -47,11 +60,14 @@ export const Pages = () => {
 
                     {/*Only Auth*/}
                     <Route element={<RequireAuth/>}>
-                        <Route path={ROUTES.APPLICATION_TAPE} element={<p>В разработке...</p>}/>
                         <Route element={<LeftHeader/>}>
                             <Route path={ROUTES.PROFILE} element={<ProfileForm/>}/>
-                            <Route path={ROUTES.ORDERS_IN_PROFILE} element={<p>В разработке...</p>}/>
+                            <Route path={ROUTES.ORDERS_IN_PROFILE} element={<ProfileListOrders/>}>
+                                {/* Popup */}
+                                {(transitionType !== 'POP') && <Route path={':id'} element={<PageOrderComposition  />}/>}
+                            </Route>
                         </Route>
+                        {(transitionType === 'POP') && <Route path={ROUTES.ORDER_IN_PROFILE} element={<PageOrderComposition  />}/>}
                     </Route>
 
                     <Route path={"*"} element={<p>404 :(</p>}/>

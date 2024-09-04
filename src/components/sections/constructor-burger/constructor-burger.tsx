@@ -1,10 +1,11 @@
 import React, {useCallback, useMemo} from "react";
 
-import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import {Button} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {useAppDispatch, useAppSelector} from "components/services/providers/store";
 
 import {clName} from "components/shared/utils";
+import {PriceWithCurrency} from "components/shared/ui";
 import {useDropItem} from "components/shared/hooks";
 
 import {IProduct, useGetProductsQuery} from "entities/products";
@@ -77,7 +78,10 @@ export const BurgerConstructor = () => {
 
    return (
        <section>
-           <div className={styles.content + ' pl-4 mb-10'} ref={dropRef}>
+           <div className={styles.content + ' pl-4 mb-10'}
+                ref={dropRef}
+                data-testid="drop_card-product_from_burger-ingredients"
+           >
                {!selectedIngredientsDocs.length && canDrop && <div className={styles.drop_place}>
                    <p className={clName('text text_type_main-medium', [], {'text_color_inactive': !canDrop})}>
                        Перетащите сюда ингредиент
@@ -136,13 +140,16 @@ export const BurgerConstructor = () => {
                    />}
                </div>
            </div>
-           <div className={styles.button_order}>
+           <div className={clName(styles.button_order, ["mr-4"])}>
                <span className="mr-10">
-                   <p className="text text_type_digits-medium">{totalPrice}&nbsp;
-                   <CurrencyIcon type="primary" /></p>
+                   <PriceWithCurrency price={totalPrice} size="medium"/>
                </span>
                <Order>
-                   <Button htmlType={'button'} disabled={isFillBasket}>Оформить заказ</Button>
+                   <Button
+                       data-testid="button-post-order"
+                       htmlType={'button'}
+                       disabled={isFillBasket}
+                   >Оформить заказ</Button>
                </Order>
            </div>
        </section>

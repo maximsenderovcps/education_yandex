@@ -7,16 +7,15 @@ import {ordersAllWSDisconnectAction, ordersAllWSStartAction} from "./actions";
 import {onErrorActionThunk, onMessageActionThunk, onSuccessActionThunk, onClosedActionThunk} from "./thunks";
 
 
+export const ordersAllWSMiddleware = websocketMiddlewareBase<AppDispatch, RootStateType>({
+    baseUrl: API_WS_URL,
+    path: API_WS_PATH_ALL_ORDERS,
 
-export const ordersAllWSMiddleware = websocketMiddlewareBase<AppDispatch, RootStateType>(
-    API_WS_URL,
-    API_WS_PATH_ALL_ORDERS,
+    wsStartAction: ordersAllWSStartAction,
+    wsDisconnectAction: ordersAllWSDisconnectAction,
 
-    ordersAllWSStartAction,
-    ordersAllWSDisconnectAction,
-
-    onSuccessActionThunk,
-    onErrorActionThunk,
-    onMessageActionThunk,
-    onClosedActionThunk
-)
+    onSuccessAction: onSuccessActionThunk,
+    onErrorAction: onErrorActionThunk,
+    onMessageAction: onMessageActionThunk,
+    onClosedAction: onClosedActionThunk
+})

@@ -1,17 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { v4 as uuid4 } from 'uuid';
+import {v4 as uuid4} from 'uuid';
 
-import {IBasket, ISetIngredient} from "./context";
+import {ISetIngredient} from "./context";
+import {TBasketState} from "./types";
 
-type TBasketState = {
-    data: IBasket
-}
-
-const initialState: TBasketState = {
+export const initialState: TBasketState = {
     data: {
         bun: null,
         ingredients: [],
-    } as IBasket
+    }
 }
 
 type IDType = string;
@@ -37,7 +34,11 @@ export const basketSlice = createSlice({
             const ingredients = [...state.data.ingredients];
             const {fromUUID, toIndex} = action.payload
 
-            const fromElement = ingredients.find((v)=>v.uuid === fromUUID)!
+            const fromElement = ingredients.find((v)=>v.uuid === fromUUID)
+
+            if (!fromElement)
+                return
+
             const fromIndex = ingredients.indexOf(fromElement)
 
             ingredients.splice(fromIndex, 1);

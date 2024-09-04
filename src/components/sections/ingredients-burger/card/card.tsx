@@ -59,6 +59,7 @@ export const Card: FC<CardProps> = (
         <div className={clName(styles.card_content, [extraClass, styles.drag_place])}
              ref={dragRef}
              onClick={handleClick}
+             data-testid="card-product"
         >
             <div className={styles.image_content}>
                 {counterElement}

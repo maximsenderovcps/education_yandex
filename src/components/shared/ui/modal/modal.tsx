@@ -1,4 +1,4 @@
-import React, {FC, SyntheticEvent, useEffect, useRef} from "react";
+import React, {FC, KeyboardEvent, SyntheticEvent, useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
 
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
@@ -26,24 +26,22 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
     const bodyRef = useRef(bodyElement)
 
     useEffect(() => {
-        bodyRef.current.style.overflow = 'hidden'
+        const bodyRefCurrent = bodyRef.current
+        bodyRefCurrent.style.overflow = 'hidden'
         modalRef.current?.showModal()
         modalRef.current?.focus()
 
-        const handleCloseByKeyDown = (e: KeyboardEvent) => {
-            if (e.code === 'Escape')
-                onClose()
-        }
-
-        window.addEventListener('keyup', handleCloseByKeyDown )
-
         return () => {
-            bodyRef.current.style.overflow = ''
-            window.removeEventListener('keyup', handleCloseByKeyDown )
+            bodyRefCurrent.style.overflow = ''
         }
     }, [bodyRef, modalRef])
 
-    const handleClose = (e?: SyntheticEvent<HTMLDialogElement>) =>{
+    const handleCloseByKeyDown = (e:KeyboardEvent<HTMLInputElement | HTMLDialogElement>) =>{
+        if (e.code === 'Escape')
+            onClose()
+    }
+
+    const handleClose = () =>{
         onClose()
         modalRef.current?.close()
     }
@@ -64,11 +62,15 @@ export const Modal: FC<React.PropsWithChildren<ModalProps>> = ({
                 <dialog className={styles.modal}
                     onClick={handleClickBackdrop}
                     onClose={handleClose}
-                    //onKeyPress={handleCloseByKeyDown}
+                    onKeyPress={handleCloseByKeyDown}
                     ref={modalRef}
+                    data-testid="modal_showed"
                 >
                     <div className={clName(styles.modal_dialog, ['p-10'])}>
-                        <div className={styles.close_icon_content}>
+                        <div
+                            className={styles.close_icon_content}
+                            data-testid="modal_close"
+                        >
                             <CloseIcon type="primary" onClick={handleClose}/>
                         </div>
                         <div className={clName(styles.modal_content, [extraClassContent])}>

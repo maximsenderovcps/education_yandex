@@ -3,18 +3,11 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IOrders} from "../models";
 
 import {ordersAllOfUserWSDisconnectAction} from "./ws/actions";
+import {TOrdersAllOfUserState} from "./types";
 
 
-type TOrdersAllOfUserState = {
-    loading: boolean,
-    isStreaming: boolean,
-    data: IOrders,
-    error: string,
-    isError: boolean
-}
 
-
-const initialState:TOrdersAllOfUserState = {
+export const initialState:TOrdersAllOfUserState = {
     loading: false,
     isStreaming: false,
     data: {

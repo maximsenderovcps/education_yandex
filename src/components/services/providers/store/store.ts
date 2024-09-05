@@ -47,5 +47,6 @@ export const persistedStore = persistStore(store)
 
 
 // expose store when run in Cypress
-if (window.Cypress)
-    window.store = store
+if ("Cypress" in window) window.store = store
+//if (window.Cypress)
+//    window.store = store

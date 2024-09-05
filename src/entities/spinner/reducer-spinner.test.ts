@@ -25,7 +25,7 @@ describe('Test reducer spinner', ()=>{
             .toEqual(expected)
     })
 
-    it('should hook action `pending` RTQ Query', ()=>{
+    it('should hook action `pending` RTK Query', ()=>{
         const actual: AnyAction = {
             type: 'api/any/pending'
         }

@@ -34,6 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "react-scripts build && gh-pages -d build",
+    "deploy_pg": "gh-pages -d build",
     "cypress:open": "npx cypress open",
     "cypress:test": "react-scripts start | npx cypress open",
     "test": "react-scripts test",
@@ -64,7 +65,7 @@
     "@types/uuid": "^9.0.3",
     "cypress": "^13.5.0",
     "fetch-mock": "^9.11.0",
-    "gh-pages": "^6.0.0",
+    "gh-pages": "^6.1.1",
     "jest": "^27.5.1",
     "react-test-renderer": "^18.2.0",
     "redux-mock-store": "^1.5.4"

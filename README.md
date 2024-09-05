@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Application Page
+ https://maximsenderovcps.github.io/education_yandex/
+
 ## Available Scripts
 
 In the project directory, you can run:

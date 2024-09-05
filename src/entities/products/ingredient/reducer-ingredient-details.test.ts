@@ -1,5 +1,5 @@
 import {initialState, slice} from "./slice";
-import {IProduct} from "../models";
+import {IProduct} from "../context";
 import {TIngredientDetailsState} from "./types";
 
 

@@ -23,6 +23,8 @@
   },
   "include": [
     "src",
-    "src/declarations"
-  ]
+    "src/declarations",
+
+    "cypress"
+  ],
 }

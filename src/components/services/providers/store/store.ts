@@ -1,6 +1,6 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
-//import logger from 'redux-logger'
-export const logger: Redux.Middleware<{}, any, Redux.Dispatch<Redux.UnknownAction>>
+import logger from 'redux-logger'
+
 import {
   persistStore,
   FLUSH,
@@ -27,7 +27,7 @@ const middlewares = [
     ordersAllWSMiddleware,
     ordersAllOfUserWSMiddleware
 ]
-if (process.env.NODE_ENV !== 'production') middlewares.unshift(logger)
+//if (process.env.NODE_ENV !== 'production') middlewares.unshift(logger)
 
 
 // Configures store

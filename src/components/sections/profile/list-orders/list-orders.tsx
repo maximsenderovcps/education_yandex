@@ -51,27 +51,28 @@ export const ListOrders = () => {
         navigate(ROUTES.ORDER_IN_PROFILE.replace(':id', String(number)))
     }, [navigate])
 
-    return(<>
-            <Outlet/>
-            {
-                isErrorWs ? <ErrorText message={errorWs} extraClass="mt-6"/> :
-                isError ? <ErrorText message={(error as any)?.error} extraClass="mt-6"/> :
-                products &&
-                    <section className={styles.box}>
-                        {!!ordersSorted.length && ordersSorted.map((v) => {
-                            return (
-                                <OrderCard key={v.number} order={v}
-                                    onClick={onClickCard}
-                                    childrenComposition={
-                                        <ProductsShortComposition ids={v.ingredients} products={products}/>
-                                    }
-                                   childrenCalcPrice={<CalcPrice ids={v.ingredients} products={products}/>}
-                                />
 
-                            )
-                        })}
-                    </section>
-            }
-        </>
-    )
+    if (isError) return <ErrorText message={(error as any)?.error} extraClass="mt-6"/>
+    if (isErrorWs) return <ErrorText message={errorWs} extraClass="mt-6"/>
+
+    return(<>
+        <Outlet/>
+
+        {products &&
+            <section className={styles.box}>
+                {!!ordersSorted.length && ordersSorted.map((v) => {
+                    return (
+                        <OrderCard key={v.number} order={v}
+                            onClick={onClickCard}
+                            childrenComposition={
+                                <ProductsShortComposition ids={v.ingredients} products={products}/>
+                            }
+                           childrenCalcPrice={<CalcPrice ids={v.ingredients} products={products}/>}
+                        />
+
+                    )
+                })}
+            </section>
+        }
+    </>)
 }

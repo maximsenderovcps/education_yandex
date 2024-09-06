@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Application Page
+ https://maximsenderovcps.github.io/education_yandex/
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

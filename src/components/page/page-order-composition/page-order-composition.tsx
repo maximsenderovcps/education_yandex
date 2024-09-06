@@ -52,8 +52,8 @@ export const PageOrderComposition = () =>{
     }, [navigate, isStreamingOfUser, isStreaming])
 
 
-    const isNotEmptyCurrentOrder: boolean = Boolean(currentOrder && currentOrder?.ingredients.length)
-    const isEmptyCurrentOrder: boolean = Boolean(currentOrder && !currentOrder?.ingredients.length)
+    const isNotEmptyCurrentOrder = Boolean(currentOrder && currentOrder?.ingredients.length)
+    const isEmptyCurrentOrder = Boolean(currentOrder && !currentOrder?.ingredients.length)
 
     return(
         <>

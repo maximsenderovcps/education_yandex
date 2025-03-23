@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo} from "react";
 
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 
-import {Modal} from "components/shared/ui";
+import {ErrorText, Modal} from "components/shared/ui";
 import {ROUTES} from "components/shared/configs";
 
 import {useAppDispatch, useAppSelector} from "components/services/providers/store";
@@ -30,10 +30,8 @@ export const IngredientDetailsPage = () => {
 
     const {
         data: products = [],
-        // isLoading,
-        // isSuccess,
-        // isError,
-        // error
+        isError,
+        error
     } = useGetProductsQuery()
 
     const details =  useMemo<IProduct | undefined>(()=>{
@@ -53,6 +51,8 @@ export const IngredientDetailsPage = () => {
             dispatch(ingredientDetailsActions.clean())
             navigate(ROUTES.HOME)
     }, [dispatch, navigate])
+
+    if (isError) return <ErrorText message={(error as any)?.error} extraClass="mt-6"/>
 
     return(
         <>

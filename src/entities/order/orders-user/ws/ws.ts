@@ -19,18 +19,18 @@ export const selectAccessTokenWithoutBearer = (state: RootStateType): { accessTo
 })
 
 
-export const ordersAllOfUserWSMiddleware = websocketMiddlewareBase<AppDispatch, RootStateType>(
-    API_WS_URL,
-    API_WS_PATH_USER_ALL_ORDERS,
+export const ordersAllOfUserWSMiddleware = websocketMiddlewareBase<AppDispatch, RootStateType>({
+    baseUrl: API_WS_URL,
+    path: API_WS_PATH_USER_ALL_ORDERS,
 
-    ordersAllOfUserWSStartAction,
-    ordersAllOfUserWSDisconnectAction,
+    wsStartAction: ordersAllOfUserWSStartAction,
+    wsDisconnectAction: ordersAllOfUserWSDisconnectAction,
 
-    onSuccessActionThunk,
-    onErrorActionThunk,
-    onMessageActionThunk,
-    onClosedActionThunk,
+    onSuccessAction: onSuccessActionThunk,
+    onErrorAction: onErrorActionThunk  ,
+    onMessageAction: onMessageActionThunk ,
+    onClosedAction: onClosedActionThunk ,
 
-    ordersAllOfUserWSReconnectAction,
-    selectAccessTokenWithoutBearer
-)
+    wsReconnectAction: ordersAllOfUserWSReconnectAction,
+    selectAccessToken: selectAccessTokenWithoutBearer
+})

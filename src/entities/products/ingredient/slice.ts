@@ -1,13 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IIngredientDetails} from "./context";
 import {IProduct} from "../index";
+import {TIngredientDetailsState} from "./types";
 
 
-type TIngredientDetailsState = {
-    data: IIngredientDetails
-}
-
-const initialState:TIngredientDetailsState = {
+export const initialState:TIngredientDetailsState = {
     data: {
         isOpen: false,
         details: {}

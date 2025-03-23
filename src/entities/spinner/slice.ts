@@ -1,13 +1,10 @@
+import type {AnyAction} from "redux";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {TSpinnerState} from "./types";
 
-const isActionOfRTKQuery = (action: any, ends: string): boolean => action.type.startsWith('api/') && action.type.endsWith(ends)
+const isActionOfRTKQuery = (action: AnyAction, ends: string): boolean => action.type && action.type.startsWith('api/') && action.type.endsWith(ends)
 
-type TSpinnerState = {
-    isLoading: boolean
-    text: string
-}
-
-const initialState: TSpinnerState = {
+export const initialState: TSpinnerState = {
     isLoading: false,
     text: 'Загрузка...'
 };

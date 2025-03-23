@@ -1,13 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {ICrendentials, ITokens, IUser} from "./models";
+import {TSessionState} from "./types";
 
-type TSessionState = {
-    isAuthed: boolean,
-    isLoading: boolean,
-    credentials: ICrendentials
-}
-
-const initialState:TSessionState = {
+export const initialState:TSessionState = {
     isAuthed: false,
     isLoading: false,
 
@@ -21,7 +16,6 @@ const initialState:TSessionState = {
 
     } as ICrendentials,
 };
-
 
 export const slice = createSlice({
     name: 'session',
